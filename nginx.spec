@@ -163,6 +163,7 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --add-module=../../SOURCES/ngx-fancyindex-0.4.2 \
     --add-module=../../SOURCES/nchan-1.1.14 \
     --add-module=../../SOURCES/nginx-upload-progress-module-0.9.2 \
+    --add-module=../../SOURCES/ngx_brotli \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}" \
     --with-debug
@@ -220,6 +221,7 @@ make %{?_smp_mflags}
     --add-module=../../SOURCES/ngx-fancyindex-0.4.2 \
     --add-module=../../SOURCES/nchan-1.1.14 \
     --add-module=../../SOURCES/nginx-upload-progress-module-0.9.2 \
+    --add-module=../../SOURCES/ngx_brotli \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}"
 make %{?_smp_mflags}

@@ -21,6 +21,8 @@ curl -LO http://nginx.org/packages/centos/${CENTOS_MAJOR_VERSION}/SRPMS/${NGINX_
 rpm -Uvh $NGINX_SRPM_FILE
 
 cd $HOME/rpmbuild/SOURCES
+git clone --recurse-submodules https://github.com/google/ngx_brotli.git
+
 curl -k -L -o naxsi-${NAXSI_VERSION}.tar.gz https://github.com/nbs-system/naxsi/archive/${NAXSI_VERSION}.tar.gz
 tar xf naxsi-${NAXSI_VERSION}.tar.gz
 

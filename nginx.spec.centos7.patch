@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
-+++ nginx.spec	2018-01-25 00:14:08.000000000 +0100
++++ nginx.spec	2018-01-25 00:26:32.000000000 +0100
 @@ -48,7 +48,7 @@
  # end of distribution specific definitions
  
@@ -34,7 +34,7 @@
  
  License: 2-clause BSD-like license
  
-@@ -104,14 +112,114 @@
+@@ -104,14 +112,116 @@
      -e 's|%%PROVIDES%%|nginx-debug|g' < %{SOURCE2} > nginx-debug.init
  
  %build
@@ -90,6 +90,7 @@
 +    --add-module=../../SOURCES/ngx-fancyindex-0.4.2 \
 +    --add-module=../../SOURCES/nchan-1.1.14 \
 +    --add-module=../../SOURCES/nginx-upload-progress-module-0.9.2 \
++    --add-module=../../SOURCES/ngx_brotli \
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}" \
      --with-debug
@@ -148,10 +149,11 @@
 +    --add-module=../../SOURCES/ngx-fancyindex-0.4.2 \
 +    --add-module=../../SOURCES/nchan-1.1.14 \
 +    --add-module=../../SOURCES/nginx-upload-progress-module-0.9.2 \
++    --add-module=../../SOURCES/ngx_brotli \
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}"
  make %{?_smp_mflags}
-@@ -312,6 +420,9 @@
+@@ -312,6 +422,9 @@
  fi
  
  %changelog
