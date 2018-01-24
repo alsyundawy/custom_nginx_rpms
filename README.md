@@ -1,8 +1,17 @@
+[![CircleCI](https://circleci.com/gh/colundrum/custom_nginx_rpms.svg?style=svg)](https://circleci.com/gh/colundrum/custom_nginx_rpms)
+
 # What is this repository?
 
 [Nginx](http://nginx.org) with :
 
-- [headers-more-module](http://wiki.nginx.org/NginxHttpHeadersMoreModule)
+- [naxsi](https://github.com/nbs-system/naxsi)
+- [headers-more](https://github.com/openresty/headers-more-nginx-module)
+- [auth-pam](https://github.com/sto/ngx_http_auth_pam_module<Paste>)
+- [cache-purge](https://github.com/FRiCKLE/ngx_cache_purge)
+- [fancyindex](https://github.com/aperezdc/ngx-fancyindex)
+- [nchan](https://github.com/slact/nchan)
+- [upload-progress](https://github.com/masterzen/nginx-upload-progress-module)
+- [upstream-fair](https://github.com/gnosek/nginx-upstream-fair)
 
 You can build RPM with headers-more-module using the official SRPM.
 

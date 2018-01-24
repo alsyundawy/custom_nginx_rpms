@@ -158,8 +158,8 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --with-http_perl_module=dynamic \
     --with-http_xslt_module=dynamic \
     --add-module=../../SOURCES/naxsi-0.55.3/naxsi_src \
-    --add-module=../../SOURCES/http-headers-more-filter-0.33 \
-    --add-module=../../SOURCES/http-auth-pam-1.5.1 \
+    --add-module=../../SOURCES/headers-more-nginx-module-0.33 \
+    --add-module=../../SOURCES/ngx_http_auth_pam_module-1.5.1 \
     --add-module=../../SOURCES/http-cache-purge-2.3 \
     --add-module=../../SOURCES/http-fancyindex-0.4.2 \
     --add-module=../../SOURCES/nchan \
@@ -216,8 +216,8 @@ make %{?_smp_mflags}
     --with-http_perl_module=dynamic \
     --with-http_xslt_module=dynamic \
     --add-module=../../SOURCES/naxsi-0.55.3/naxsi_src \
-    --add-module=../../SOURCES/http-headers-more-filter-0.33 \
-    --add-module=../../SOURCES/http-auth-pam-1.5.1 \
+    --add-module=../../SOURCES/headers-more-nginx-module-0.33 \
+    --add-module=../../SOURCES/ngx_http_auth_pam_module-1.5.1 \
     --add-module=../../SOURCES/http-cache-purge-2.3 \
     --add-module=../../SOURCES/http-fancyindex-0.4.2 \
     --add-module=../../SOURCES/nchan \
