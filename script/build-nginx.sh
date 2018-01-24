@@ -22,13 +22,28 @@ rpm -Uvh $NGINX_SRPM_FILE
 
 cd $HOME/rpmbuild/SOURCES
 curl -L -o naxi-${NAXSI_VERSION}.tar.gz https://github.com/nbs-system/naxsi/archive/${NAXSI_VERSION}.tar.gz
+tar xf naxsi-${NAXSI_VERSION}.tar.gz
+
 curl -L -o headers-more-nginx-module-${HEADERS_MORE_VERSION}.tar.gz https://github.com/openresty/headers-more-nginx-module/archive/v${HEADERS_MORE_VERSION}.tar.gz
+tar xf headers-more-nginx-module-${HEADERS_MORE_VERSION}.tar.gz
+
 curl -L -o http-auth-pam-${HTTP_AUTH_PAM_VERSION}.tar.gz https://github.com/sto/ngx_http_auth_pam_module/archive/v${HTTP_AUTH_PAM_VERSION}.tar.gz
+tar xf http-auth-pam-${HTTP_AUTH_PAM_VERSION}.tar.gz
+
 curl -L -o http-cache-purge-${HTTP_CACHE_PURGE_VERSION}.tar.gz https://github.com/FRiCKLE/ngx_cache_purge/archive/${HTTP_CACHE_PURGE_VERSION}.tar.gz
+tar xf http-cache-purge-${HTTP_CACHE_PURGE_VERSION}.tar.gz
+
 curl -L -o http-fancyindex-${HTTP_FANCYINDEX_VERSION}.tar.gz https://github.com/aperezdc/ngx-fancyindex/archive/v${HTTP_FANCYINDEX_VERSION}.tar.gz
+tar xf http-fancyindex-${HTTP_FANCYINDEX_VERSION}.tar.gz
+
 curl -L -o nchan-${NCHAN_VERSION}.tar.gz https://github.com/slact/nchan/archive/v${NCHAN_VERSION}.tar.gz
+tar xf nchan-${NCHAN_VERSION}.tar.gz
+
 curl -L -o http-uploadprogress-${HTTP_UPLOADPROGRESS_VERSION}.tar.gz https://github.com/masterzen/nginx-upload-progress-module/archive/v${HTTP_UPLOADPROGRESS_VERSION}.tar.gz
+tar xf http-uploadprogress-${HTTP_UPLOADPROGRESS_VERSION}.tar.gz
+
 curl -L -o http-upstream-fair.zip https://github.com/gnosek/nginx-upstream-fair/archive/master.zip
+unzip http-upstream-fair.zip
 
 cd $HOME/rpmbuild/SPECS
 patch -p0 < $PATCH_PATH

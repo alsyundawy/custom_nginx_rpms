@@ -164,7 +164,7 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --add-module=../http-fancyindex-0.4.2 \
     --add-module=../nchan \
     --add-module=../http-uploadprogress \
-    --add-module=../http-upstream-fair \
+    --add-module=../http-upstream-fair-master \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}" \
     --with-debug
@@ -222,7 +222,7 @@ make %{?_smp_mflags}
     --add-module=../http-fancyindex-0.4.2 \
     --add-module=../nchan \
     --add-module=../http-uploadprogress \
-    --add-module=../http-upstream-fair \
+    --add-module=../http-upstream-fair-master \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}"
 make %{?_smp_mflags}
