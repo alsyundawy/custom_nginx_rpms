@@ -21,7 +21,7 @@ curl -LO http://nginx.org/packages/centos/${CENTOS_MAJOR_VERSION}/SRPMS/${NGINX_
 rpm -Uvh $NGINX_SRPM_FILE
 
 cd $HOME/rpmbuild/SOURCES
-curl -k -L -o naxi-${NAXSI_VERSION}.tar.gz https://github.com/nbs-system/naxsi/archive/${NAXSI_VERSION}.tar.gz
+curl -k -L -o naxsi-${NAXSI_VERSION}.tar.gz https://github.com/nbs-system/naxsi/archive/${NAXSI_VERSION}.tar.gz
 tar xf naxsi-${NAXSI_VERSION}.tar.gz
 
 curl -k -L -o headers-more-nginx-module-${HEADERS_MORE_VERSION}.tar.gz https://github.com/openresty/headers-more-nginx-module/archive/v${HEADERS_MORE_VERSION}.tar.gz
