@@ -6,7 +6,7 @@ CENTOS_MAJOR_VERSION=$(rpm -q --qf '%{VERSION}' $(rpm -q --whatprovides redhat-r
 
 PATCH_PATH=$HOME/nginx.spec.centos${CENTOS_MAJOR_VERSION}.patch
 
-NGINX_VERSION=$(grep '^ Version:' $PATCH_PATH | cut -d ' ' -f 3)
+NGINX_VERSION=$(grep '^+Version:' $PATCH_PATH | cut -d ' ' -f 3)
 
 NAXSI_VERSION=$(grep 'naxsi-.*\.tar\.gz' $PATCH_PATH | cut -d ' ' -f 2 | sed -e 's@naxsi-\([0-9]\+\)\.\([0-9]\+\)\.\([0-9]\+\)\.tar\.gz@\1.\2.\3@')
 HEADERS_MORE_VERSION=$(grep 'headers-more-nginx-module-.*\.tar\.gz' $PATCH_PATH | cut -d ' ' -f 2 | sed -e 's@headers-more-nginx-module-\([0-9]\+\)\.\([0-9]\+\)\.tar\.gz@\1.\2@')
