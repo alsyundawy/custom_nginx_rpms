@@ -157,14 +157,14 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --with-http_image_filter_module=dynamic \
     --with-http_perl_module=dynamic \
     --with-http_xslt_module=dynamic \
-    --add-module=../naxsi-0.55.3/naxsi_src \
-    --add-module=../http-headers-more-filter-0.33 \
-    --add-module=../http-auth-pam-1.5.1 \
-    --add-module=../http-cache-purge-2.3 \
-    --add-module=../http-fancyindex-0.4.2 \
-    --add-module=../nchan \
-    --add-module=../http-uploadprogress \
-    --add-module=../http-upstream-fair-master \
+    --add-module=../../SOURCES/naxsi-0.55.3/naxsi_src \
+    --add-module=../../SOURCES/http-headers-more-filter-0.33 \
+    --add-module=../../SOURCES/http-auth-pam-1.5.1 \
+    --add-module=../../SOURCES/http-cache-purge-2.3 \
+    --add-module=../../SOURCES/http-fancyindex-0.4.2 \
+    --add-module=../../SOURCES/nchan \
+    --add-module=../../SOURCES/http-uploadprogress \
+    --add-module=../../SOURCES/http-upstream-fair-master \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}" \
     --with-debug
@@ -215,14 +215,14 @@ make %{?_smp_mflags}
     --with-http_image_filter_module=dynamic \
     --with-http_perl_module=dynamic \
     --with-http_xslt_module=dynamic \
-    --add-module=../naxsi-0.55.3/naxsi_src \
-    --add-module=../http-headers-more-filter-0.33 \
-    --add-module=../http-auth-pam-1.5.1 \
-    --add-module=../http-cache-purge-2.3 \
-    --add-module=../http-fancyindex-0.4.2 \
-    --add-module=../nchan \
-    --add-module=../http-uploadprogress \
-    --add-module=../http-upstream-fair-master \
+    --add-module=../../SOURCES/naxsi-0.55.3/naxsi_src \
+    --add-module=../../SOURCES/http-headers-more-filter-0.33 \
+    --add-module=../../SOURCES/http-auth-pam-1.5.1 \
+    --add-module=../../SOURCES/http-cache-purge-2.3 \
+    --add-module=../../SOURCES/http-fancyindex-0.4.2 \
+    --add-module=../../SOURCES/nchan \
+    --add-module=../../SOURCES/http-uploadprogress \
+    --add-module=../../SOURCES/http-upstream-fair-master \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}"
 make %{?_smp_mflags}
