@@ -308,6 +308,8 @@ cd $RPM_BUILD_ROOT%{_sysconfdir}/nginx && \
 %dir %{_sysconfdir}/nginx
 %dir %{_sysconfdir}/nginx/conf.d
 %{_sysconfdir}/nginx/modules
+%dir %{_libdir}/nginx/modules
+%dir %{_libdir}/perl5/vendor_perl/auto/nginx
 
 %config(noreplace) %{_sysconfdir}/nginx/nginx.conf
 %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
@@ -343,6 +345,7 @@ cd $RPM_BUILD_ROOT%{_sysconfdir}/nginx && \
 
 %dir %{_datadir}/doc/%{name}-%{main_version}
 %doc %{_datadir}/doc/%{name}-%{main_version}/COPYRIGHT
+%{_mandir}/man3/nginx.3pm.gz
 %{_mandir}/man8/nginx.8*
 
 %pre
