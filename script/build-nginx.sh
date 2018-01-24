@@ -16,7 +16,7 @@ HTTP_FANCYINDEX_VERSION=$(grep 'http-fancyindex-.*\.tar\.gz' $PATCH_PATH | cut -
 NCHAN_VERSION=$(grep 'nchan-.*\.tar\.gz' $PATCH_PATH | cut -d ' ' -f 2 | sed -e 's@nchan-\([0-9]\+\)\.\([0-9]\+\)\.\([0-9]\+\)\.tar\.gz@\1.\2.\3@')
 HTTP_UPLOADPROGRESS_VERSION=$(grep 'http-uploadprogress-.*\.tar\.gz' $PATCH_PATH | cut -d ' ' -f 2 | sed -e 's@http-uploadprogress-\([0-9]\+\)\.\([0-9]\+\)\.\([0-9]\+\)\.tar\.gz@\1.\2.\3@')
 
-NGINX_SRPM_FILE=nginx-${NGINX_VERSION}-1.el${CENTOS_MAJOR_VERSION}.ngx.src.rpm
+NGINX_SRPM_FILE=nginx-${NGINX_VERSION}-1.el${CENTOS_MAJOR_VERSION}_4.ngx.src.rpm
 curl -LO http://nginx.org/packages/centos/${CENTOS_MAJOR_VERSION}/SRPMS/${NGINX_SRPM_FILE}
 rpm -Uvh $NGINX_SRPM_FILE
 
