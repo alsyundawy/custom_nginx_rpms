@@ -11,7 +11,6 @@
 - [fancyindex](https://github.com/aperezdc/ngx-fancyindex)
 - [nchan](https://github.com/slact/nchan)
 - [upload-progress](https://github.com/masterzen/nginx-upload-progress-module)
-- [upstream-fair](https://github.com/gnosek/nginx-upstream-fair)
 
 You can build RPM with headers-more-module using the official SRPM.
 

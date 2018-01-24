@@ -42,9 +42,6 @@ tar xf nchan-${NCHAN_VERSION}.tar.gz
 curl -k -L -o http-uploadprogress-${HTTP_UPLOADPROGRESS_VERSION}.tar.gz https://github.com/masterzen/nginx-upload-progress-module/archive/v${HTTP_UPLOADPROGRESS_VERSION}.tar.gz
 tar xf http-uploadprogress-${HTTP_UPLOADPROGRESS_VERSION}.tar.gz
 
-curl -k -L -o http-upstream-fair.zip https://github.com/gnosek/nginx-upstream-fair/archive/master.zip
-unzip http-upstream-fair.zip
-
 cd $HOME/rpmbuild/SPECS
 patch -p0 < $PATCH_PATH
 rpmbuild -ba nginx.spec
