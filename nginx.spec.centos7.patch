@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
-+++ nginx.spec	2018-01-24 17:54:59.000000000 +0100
++++ nginx.spec	2018-01-24 19:00:58.000000000 +0100
 @@ -48,7 +48,7 @@
  # end of distribution specific definitions
  
@@ -85,8 +85,8 @@
 +    --with-http_perl_module=dynamic \
 +    --with-http_xslt_module=dynamic \
 +    --add-module=../../SOURCES/naxsi-0.55.3/naxsi_src \
-+    --add-module=../../SOURCES/http-headers-more-filter-0.33 \
-+    --add-module=../../SOURCES/http-auth-pam-1.5.1 \
++    --add-module=../../SOURCES/headers-more-nginx-module-0.33 \
++    --add-module=../../SOURCES/ngx_http_auth_pam_module-1.5.1 \
 +    --add-module=../../SOURCES/http-cache-purge-2.3 \
 +    --add-module=../../SOURCES/http-fancyindex-0.4.2 \
 +    --add-module=../../SOURCES/nchan \
@@ -144,8 +144,8 @@
 +    --with-http_perl_module=dynamic \
 +    --with-http_xslt_module=dynamic \
 +    --add-module=../../SOURCES/naxsi-0.55.3/naxsi_src \
-+    --add-module=../../SOURCES/http-headers-more-filter-0.33 \
-+    --add-module=../../SOURCES/http-auth-pam-1.5.1 \
++    --add-module=../../SOURCES/headers-more-nginx-module-0.33 \
++    --add-module=../../SOURCES/ngx_http_auth_pam_module-1.5.1 \
 +    --add-module=../../SOURCES/http-cache-purge-2.3 \
 +    --add-module=../../SOURCES/http-fancyindex-0.4.2 \
 +    --add-module=../../SOURCES/nchan \
