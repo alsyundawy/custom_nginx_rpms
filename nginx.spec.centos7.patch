@@ -1,170 +1,166 @@
---- nginx.spec.org	2016-01-29 16:59:27.000000000 +0900
-+++ nginx.spec	2016-01-29 17:01:52.000000000 +0900
-@@ -59,7 +59,8 @@
+--- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
++++ nginx.spec	2018-01-24 17:54:59.000000000 +0100
+@@ -48,7 +48,7 @@
+ # end of distribution specific definitions
+ 
+ %define main_version 1.12.2
+-%define main_release 1%{?dist}.ngx
++%define main_release 1%{?dist}.COLUNDRUM
+ 
+ %define bdir %{_builddir}/%{name}-%{main_version}
+ 
+@@ -59,8 +59,9 @@
+ 
  Summary: High performance web server
  Name: nginx
- Version: 1.12.2
--Release: 1%{?dist}.ngx
-+Release: 1%{?dist}.COLUNDRUM
+-Version: %{main_version}
++Version: 1.12.2
+ Release: %{main_release}
 +Packager: COLUNDRUM <colundrum@users.noreply.github.com>
- Vendor: nginx inc.
+ Vendor: Nginx, Inc.
  URL: http://nginx.org/
+ Group: %{_group}
+@@ -78,6 +79,14 @@
+ Source11: nginx-debug.service
+ Source12: COPYRIGHT
+ Source13: nginx.check-reload.sh
++Source14: headers-more-nginx-module-0.33.tar.gz
++Source15: naxsi-0.55.3.tar.gz
++Source16: http-auth-pam-1.5.1.tar.gz
++Source17: http-cache-purge-2.3.tar.gz
++Source18: http-fancyindex-0.4.2.tar.gz
++Source19: nchan-1.1.14.tar.gz
++Source20: http-uploadprogress-0.9.2.tar.gz
++Source21: http-upstream-fair.zip
  
-@@ -74,6 +75,7 @@
- Source8: nginx.service
- Source9: nginx.upgrade.sh
- Source10: nginx.suse.logrotate
-+Source11: headers-more-nginx-module-0.29.tar.gz
-
  License: 2-clause BSD-like license
-
-@@ -100,6 +102,7 @@
-
- %prep
- %setup -q
-+%setup -b 11 -q
-
+ 
+@@ -104,14 +113,116 @@
+     -e 's|%%PROVIDES%%|nginx-debug|g' < %{SOURCE2} > nginx-debug.init
+ 
  %build
- ./configure \
-@@ -119,23 +122,24 @@
-         --group=%{nginx_group} \
-         --with-http_ssl_module \
-         --with-http_realip_module \
--        --with-http_addition_module \
--        --with-http_sub_module \
--        --with-http_dav_module \
--        --with-http_flv_module \
--        --with-http_mp4_module \
--        --with-http_gunzip_module \
-         --with-http_gzip_static_module \
--        --with-http_random_index_module \
--        --with-http_secure_link_module \
-         --with-http_stub_status_module \
--        --with-http_auth_request_module \
--        --with-mail \
--        --with-mail_ssl_module \
-         --with-file-aio \
--        --with-ipv6 \
-+        --with-pcre \
-+        --without-http_autoindex_module \
-+        --without-http_empty_gif_module \
-+        --without-http_geo_module \
-+        --without-http_scgi_module \
-+        --without-http_ssi_module \
-+        --without-http_split_clients_module \
-+        --without-http_upstream_ip_hash_module \
-+        --without-http_userid_module \
-+        --without-http_uwsgi_module \
-+        --without-mail_imap_module \
-+        --without-mail_pop3_module \
-+        --without-mail_smtp_module \
-         --with-debug \
--        %{?with_spdy:--with-http_spdy_module} \
-+        --add-module=../headers-more-nginx-module-0.29 \
-         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
-         $*
+-./configure %{BASE_CONFIGURE_ARGS} \
++./configure --prefix=%{_sysconfdir}/nginx \
++    --sbin-path=%{_sbindir}/nginx \
++    --modules-path=%{_libdir}/nginx/modules \
++    --conf-path=%{_sysconfdir}/nginx/nginx.conf \
++    --error-log-path=%{_localstatedir}/log/nginx/error.log \
++    --http-log-path=%{_localstatedir}/log/nginx/access.log \
++    --pid-path=%{_localstatedir}/run/nginx.pid \
++    --lock-path=%{_localstatedir}/run/nginx.lock \
++    --http-client-body-temp-path=%{_localstatedir}/cache/nginx/client_temp \
++    --http-proxy-temp-path=%{_localstatedir}/cache/nginx/proxy_temp \
++    --http-fastcgi-temp-path=%{_localstatedir}/cache/nginx/fastcgi_temp \
++    --http-uwsgi-temp-path=%{_localstatedir}/cache/nginx/uwsgi_temp \
++    --http-scgi-temp-path=%{_localstatedir}/cache/nginx/scgi_temp \
++    --user=%{nginx_user} \
++    --group=%{nginx_group} \
++    --with-compat \
++    --with-file-aio \
++    --with-threads \
++    --with-http_addition_module \
++    --with-http_auth_request_module \
++    --with-http_dav_module \
++    --with-http_flv_module \
++    --with-http_gunzip_module \
++    --with-http_gzip_static_module \
++    --with-http_mp4_module \
++    --with-http_random_index_module \
++    --with-http_realip_module \
++    --with-http_secure_link_module \
++    --with-http_slice_module \
++    --with-http_ssl_module \
++    --with-http_stub_status_module \
++    --with-http_sub_module \
++    --with-http_v2_module \
++    --with-mail \
++    --with-mail_ssl_module \
++    --with-stream \
++    --with-stream_realip_module \
++    --with-stream_ssl_module \
++    --with-stream_ssl_preread_module \
++    --with-pcre-jit \
++    --with-http_geoip_module=dynamic \
++    --with-http_image_filter_module=dynamic \
++    --with-http_perl_module=dynamic \
++    --with-http_xslt_module=dynamic \
++    --add-module=../naxsi-0.55.3/naxsi_src \
++    --add-module=../http-headers-more-filter-0.33 \
++    --add-module=../http-auth-pam-1.5.1 \
++    --add-module=../http-cache-purge-2.3 \
++    --add-module=../http-fancyindex-0.4.2 \
++    --add-module=../nchan \
++    --add-module=../http-uploadprogress \
++    --add-module=../http-upstream-fair \
+     --with-cc-opt="%{WITH_CC_OPT}" \
+     --with-ld-opt="%{WITH_LD_OPT}" \
+     --with-debug
  make %{?_smp_mflags}
-@@ -158,22 +162,23 @@
-         --group=%{nginx_group} \
-         --with-http_ssl_module \
-         --with-http_realip_module \
--        --with-http_addition_module \
--        --with-http_sub_module \
--        --with-http_dav_module \
--        --with-http_flv_module \
--        --with-http_mp4_module \
--        --with-http_gunzip_module \
-         --with-http_gzip_static_module \
--        --with-http_random_index_module \
--        --with-http_secure_link_module \
-         --with-http_stub_status_module \
--        --with-http_auth_request_module \
--        --with-mail \
--        --with-mail_ssl_module \
-         --with-file-aio \
--        --with-ipv6 \
--        %{?with_spdy:--with-http_spdy_module} \
-+        --with-pcre \
-+        --without-http_autoindex_module \
-+        --without-http_empty_gif_module \
-+        --without-http_geo_module \
-+        --without-http_scgi_module \
-+        --without-http_ssi_module \
-+        --without-http_split_clients_module \
-+        --without-http_upstream_ip_hash_module \
-+        --without-http_userid_module \
-+        --without-http_uwsgi_module \
-+        --without-mail_imap_module \
-+        --without-mail_pop3_module \
-+        --without-mail_smtp_module \
-+        --add-module=../headers-more-nginx-module-0.29 \
-         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
-         $*
+ %{__mv} %{bdir}/objs/nginx \
+     %{bdir}/objs/nginx-debug
+-./configure %{BASE_CONFIGURE_ARGS} \
++./configure --prefix=%{_sysconfdir}/nginx \
++    --sbin-path=%{_sbindir}/nginx \
++    --modules-path=%{_libdir}/nginx/modules \
++    --conf-path=%{_sysconfdir}/nginx/nginx.conf \
++    --error-log-path=%{_localstatedir}/log/nginx/error.log \
++    --http-log-path=%{_localstatedir}/log/nginx/access.log \
++    --pid-path=%{_localstatedir}/run/nginx.pid \
++    --lock-path=%{_localstatedir}/run/nginx.lock \
++    --http-client-body-temp-path=%{_localstatedir}/cache/nginx/client_temp \
++    --http-proxy-temp-path=%{_localstatedir}/cache/nginx/proxy_temp \
++    --http-fastcgi-temp-path=%{_localstatedir}/cache/nginx/fastcgi_temp \
++    --http-uwsgi-temp-path=%{_localstatedir}/cache/nginx/uwsgi_temp \
++    --http-scgi-temp-path=%{_localstatedir}/cache/nginx/scgi_temp \
++    --user=%{nginx_user} \
++    --group=%{nginx_group} \
++    --with-compat \
++    --with-file-aio \
++    --with-threads \
++    --with-http_addition_module \
++    --with-http_auth_request_module \
++    --with-http_dav_module \
++    --with-http_flv_module \
++    --with-http_gunzip_module \
++    --with-http_gzip_static_module \
++    --with-http_mp4_module \
++    --with-http_random_index_module \
++    --with-http_realip_module \
++    --with-http_secure_link_module \
++    --with-http_slice_module \
++    --with-http_ssl_module \
++    --with-http_stub_status_module \
++    --with-http_sub_module \
++    --with-http_v2_module \
++    --with-mail \
++    --with-mail_ssl_module \
++    --with-stream \
++    --with-stream_realip_module \
++    --with-stream_ssl_module \
++    --with-stream_ssl_preread_module \
++    --with-pcre-jit \
++    --with-http_geoip_module=dynamic \
++    --with-http_image_filter_module=dynamic \
++    --with-http_perl_module=dynamic \
++    --with-http_xslt_module=dynamic \
++    --add-module=../naxsi-0.55.3/naxsi_src \
++    --add-module=../http-headers-more-filter-0.33 \
++    --add-module=../http-auth-pam-1.5.1 \
++    --add-module=../http-cache-purge-2.3 \
++    --add-module=../http-fancyindex-0.4.2 \
++    --add-module=../nchan \
++    --add-module=../http-uploadprogress \
++    --add-module=../http-upstream-fair \
+     --with-cc-opt="%{WITH_CC_OPT}" \
+     --with-ld-opt="%{WITH_LD_OPT}"
  make %{?_smp_mflags}
-@@ -183,23 +188,23 @@
- %{__make} DESTDIR=$RPM_BUILD_ROOT install
-
- %{__mkdir} -p $RPM_BUILD_ROOT%{_datadir}/nginx
--%{__mv} $RPM_BUILD_ROOT%{_sysconfdir}/nginx/html $RPM_BUILD_ROOT%{_datadir}/nginx/
-
- %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
- %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/fastcgi.conf
-+%{__rm} -rf $RPM_BUILD_ROOT%{_sysconfdir}/nginx/html
-+%{__rm} -rf $RPM_BUILD_ROOT%{_sysconfdir}/nginx/scgi_params
-+%{__rm} -rf $RPM_BUILD_ROOT%{_sysconfdir}/nginx/uwsgi_params
-+%{__rm} -rf $RPM_BUILD_ROOT%{_sysconfdir}/nginx/koi-*
-
- %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
- %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
- %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/cache/nginx
-
- %{__mkdir} -p $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d
-+%{__mkdir} -p $RPM_BUILD_ROOT%{_sysconfdir}/nginx/vhosts
- %{__rm} $RPM_BUILD_ROOT%{_sysconfdir}/nginx/nginx.conf
- %{__install} -m 644 -p %{SOURCE4} \
-    $RPM_BUILD_ROOT%{_sysconfdir}/nginx/nginx.conf
--%{__install} -m 644 -p %{SOURCE5} \
--   $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d/default.conf
--%{__install} -m 644 -p %{SOURCE6} \
--   $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d/example_ssl.conf
-
- %{__mkdir} -p $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig
- %{__install} -m 644 -p %{SOURCE3} \
-@@ -248,16 +253,11 @@
-
- %dir %{_sysconfdir}/nginx
- %dir %{_sysconfdir}/nginx/conf.d
-+%dir %{_sysconfdir}/nginx/vhosts
-
- %config(noreplace) %{_sysconfdir}/nginx/nginx.conf
--%config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
--%config(noreplace) %{_sysconfdir}/nginx/conf.d/example_ssl.conf
- %config(noreplace) %{_sysconfdir}/nginx/mime.types
- %config(noreplace) %{_sysconfdir}/nginx/fastcgi_params
--%config(noreplace) %{_sysconfdir}/nginx/scgi_params
--%config(noreplace) %{_sysconfdir}/nginx/uwsgi_params
--%config(noreplace) %{_sysconfdir}/nginx/koi-utf
--%config(noreplace) %{_sysconfdir}/nginx/koi-win
- %config(noreplace) %{_sysconfdir}/nginx/win-utf
-
- %config(noreplace) %{_sysconfdir}/logrotate.d/nginx
-@@ -270,10 +270,6 @@
- %{_initrddir}/nginx
- %endif
-
--%dir %{_datadir}/nginx
--%dir %{_datadir}/nginx/html
--%{_datadir}/nginx/html/*
--
- %attr(0755,root,root) %dir %{_localstatedir}/cache/nginx
- %attr(0755,root,root) %dir %{_localstatedir}/log/nginx
-
-@@ -350,6 +346,9 @@
+@@ -312,6 +423,9 @@
  fi
-
+ 
  %changelog
-+* Fri Jan 29 2016 Takashi Masuda <masutaka@feedforce.jp>
-+- 1.8.1 with Headers More module
++* Wed Jan 24 2018 COLUNDRUM <colundrum@users.noreply.github.com>
++- 1.12.2 custom build
 +
- * Tue Jan 26 2016 Konstantin Pavlov <thresh@nginx.com>
- - 1.8.1
+ * Tue Oct 17 2017 Konstantin Pavlov <thresh@nginx.com>
+ - 1.12.2
+ 
