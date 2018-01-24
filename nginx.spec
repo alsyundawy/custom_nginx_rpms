@@ -160,7 +160,7 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --add-module=../../SOURCES/naxsi-0.55.3/naxsi_src \
     --add-module=../../SOURCES/headers-more-nginx-module-0.33 \
     --add-module=../../SOURCES/ngx_http_auth_pam_module-1.5.1 \
-    --add-module=../../SOURCES/http-cache-purge-2.3 \
+    --add-module=../../SOURCES/ngx_cache_purge-2.3 \
     --add-module=../../SOURCES/http-fancyindex-0.4.2 \
     --add-module=../../SOURCES/nchan \
     --add-module=../../SOURCES/http-uploadprogress \
@@ -218,7 +218,7 @@ make %{?_smp_mflags}
     --add-module=../../SOURCES/naxsi-0.55.3/naxsi_src \
     --add-module=../../SOURCES/headers-more-nginx-module-0.33 \
     --add-module=../../SOURCES/ngx_http_auth_pam_module-1.5.1 \
-    --add-module=../../SOURCES/http-cache-purge-2.3 \
+    --add-module=../../SOURCES/ngx_cache_purge-2.3 \
     --add-module=../../SOURCES/http-fancyindex-0.4.2 \
     --add-module=../../SOURCES/nchan \
     --add-module=../../SOURCES/http-uploadprogress \
