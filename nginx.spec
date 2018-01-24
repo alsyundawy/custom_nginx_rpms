@@ -161,9 +161,9 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --add-module=../../SOURCES/headers-more-nginx-module-0.33 \
     --add-module=../../SOURCES/ngx_http_auth_pam_module-1.5.1 \
     --add-module=../../SOURCES/ngx_cache_purge-2.3 \
-    --add-module=../../SOURCES/http-fancyindex-0.4.2 \
-    --add-module=../../SOURCES/nchan \
-    --add-module=../../SOURCES/http-uploadprogress \
+    --add-module=../../SOURCES/ngx-fancyindex-0.4.2 \
+    --add-module=../../SOURCES/nchan-1.1.14 \
+    --add-module=../../SOURCES/nginx-upload-progress-module-0.9.2 \
     --add-module=../../SOURCES/http-upstream-fair-master \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}" \
@@ -219,9 +219,9 @@ make %{?_smp_mflags}
     --add-module=../../SOURCES/headers-more-nginx-module-0.33 \
     --add-module=../../SOURCES/ngx_http_auth_pam_module-1.5.1 \
     --add-module=../../SOURCES/ngx_cache_purge-2.3 \
-    --add-module=../../SOURCES/http-fancyindex-0.4.2 \
-    --add-module=../../SOURCES/nchan \
-    --add-module=../../SOURCES/http-uploadprogress \
+    --add-module=../../SOURCES/ngx-fancyindex-0.4.2 \
+    --add-module=../../SOURCES/nchan-1.1.14 \
+    --add-module=../../SOURCES/nginx-upload-progress-module-0.9.2 \
     --add-module=../../SOURCES/http-upstream-fair-master \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}"
