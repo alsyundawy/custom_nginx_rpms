@@ -4,7 +4,7 @@ set -xe
 
 PATCH_PATH=$HOME/$CIRCLE_PROJECT_REPONAME/nginx.spec.centos7.patch
 
-NGINX_VERSION=$(grep '^ Version:' $PATCH_PATH | cut -d ' ' -f 3)
+NGINX_VERSION=$(grep '^+Version:' $PATCH_PATH | cut -d ' ' -f 2)
 
 RELEASE_TAG=${NGINX_VERSION}-$(grep '^+Release:' $PATCH_PATH | awk '{print $2}' | sed -e 's@%.*@@') # ad hoc
 RELEASE_NAME=v${RELEASE_TAG}
@@ -63,22 +63,9 @@ Build on CentOS 7
 EOS
 
 # CentOS 7
-for i in *.el7.centos.ngx.x86_64.rpm; do
+for i in *.el7*.centos.ngx.x86_64.rpm; do
   print_rpm_markdown $i >> description.md
   upload_rpm $i
-done
-
-cat <<EOS >> description.md
-
-Build on CentOS 6
-
-EOS
-
-# CentOS 6
-for i in *.el6.ngx.x86_64.rpm; do
-  print_rpm_markdown $i >> description.md
-  upload_rpm $i
-done
 
 #
 # Make the release note to complete!

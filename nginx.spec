@@ -60,7 +60,7 @@ BuildRequires: systemd
 Summary: High performance web server
 Name: nginx
 Version: 1.12.2
-Release: %{main_release}
+Release: 1%{?dist}.COLUNDRUM
 Packager: COLUNDRUM <colundrum@users.noreply.github.com>
 Vendor: Nginx, Inc.
 URL: http://nginx.org/
@@ -228,6 +228,8 @@ make %{?_smp_mflags}
 %{__mv} $RPM_BUILD_ROOT%{_sysconfdir}/nginx/html $RPM_BUILD_ROOT%{_datadir}/nginx/
 
 %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
+%{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/fastcgi.conf
+
 %{__install} -m 644 -p $RPM_BUILD_ROOT/../../SOURCES/naxsi-0.55.3/naxsi_config/naxsi_core.rules $RPM_BUILD_ROOT%{_sysconfdir}/nginx/
 
 %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
@@ -306,7 +308,6 @@ cd $RPM_BUILD_ROOT%{_sysconfdir}/nginx && \
 %config(noreplace) %{_sysconfdir}/nginx/nginx.conf
 %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
 %config(noreplace) %{_sysconfdir}/nginx/mime.types
-%config(noreplace) %{_sysconfdir}/nginx/fastcgi.conf
 %config(noreplace) %{_sysconfdir}/nginx/fastcgi_params
 %config(noreplace) %{_sysconfdir}/nginx/naxsi_core.rules
 %config(noreplace) %{_sysconfdir}/nginx/scgi_params
