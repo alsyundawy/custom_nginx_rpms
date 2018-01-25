@@ -132,7 +132,6 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --with-threads \
     --with-http_addition_module \
     --with-http_auth_request_module \
-    --with-http_dav_module \
     --with-http_gunzip_module \
     --with-http_gzip_static_module \
     --with-http_mp4_module \
@@ -187,7 +186,6 @@ make %{?_smp_mflags}
     --with-threads \
     --with-http_addition_module \
     --with-http_auth_request_module \
-    --with-http_dav_module \
     --with-http_gunzip_module \
     --with-http_gzip_static_module \
     --with-http_mp4_module \
