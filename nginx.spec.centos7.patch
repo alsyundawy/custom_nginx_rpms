@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
-+++ nginx.spec	2018-01-25 18:46:10.000000000 +0100
++++ nginx.spec	2018-01-25 19:03:51.000000000 +0100
 @@ -24,6 +24,18 @@
  Requires(pre): shadow-utils
  Requires: systemd
@@ -92,10 +92,10 @@
 +    --add-module=../../SOURCES/nchan \
 +    --add-module=../../SOURCES/nginx-upload-progress-module \
 +    --add-module=../../SOURCES/ngx_brotli \
-+    --add-module=../../SOURCE5/nginx_circle_gif \
-+    --add-module=../../SOURCE5/nginx-openssl-version \
-+    --add-module=../../SOURCE5/ngx_log_if \
-+    --add-module=../../SOURCE5/ngx_http_internal_redirect \
++    --add-module=../../SOURCES/nginx_circle_gif \
++    --add-module=../../SOURCES/nginx-openssl-version \
++    --add-module=../../SOURCES/ngx_log_if \
++    --add-module=../../SOURCES/ngx_http_internal_redirect \
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}" \
      --with-debug
@@ -150,10 +150,10 @@
 +    --add-module=../../SOURCES/nchan \
 +    --add-module=../../SOURCES/nginx-upload-progress-module \
 +    --add-module=../../SOURCES/ngx_brotli \
-+    --add-module=../../SOURCE5/nginx_circle_gif \
-+    --add-module=../../SOURCE5/nginx-openssl-version \
-+    --add-module=../../SOURCE5/ngx_log_if \
-+    --add-module=../../SOURCE5/ngx_http_internal_redirect \
++    --add-module=../../SOURCES/nginx_circle_gif \
++    --add-module=../../SOURCES/nginx-openssl-version \
++    --add-module=../../SOURCES/ngx_log_if \
++    --add-module=../../SOURCES/ngx_http_internal_redirect \
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}"
  make %{?_smp_mflags}
