@@ -65,7 +65,7 @@ EOS
 # CentOS 7
 for i in *.el7*.COLUNDRUM.x86_64.rpm; do
   print_rpm_markdown $i >> description.md
-  upload_rpm $i
+  upload_rpm $i; done
 
 #
 # Make the release note to complete!
