@@ -171,6 +171,7 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --add-module=../../SOURCES/nchan \
     --add-module=../../SOURCES/nginx-upload-progress-module \
     --add-module=../../SOURCES/ngx_brotli \
+    --add-module=../../SOURCE5/nginx_circle_gif \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}" \
     --with-debug
@@ -224,6 +225,7 @@ make %{?_smp_mflags}
     --add-module=../../SOURCES/nchan \
     --add-module=../../SOURCES/nginx-upload-progress-module \
     --add-module=../../SOURCES/ngx_brotli \
+    --add-module=../../SOURCE5/nginx_circle_gif \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}"
 make %{?_smp_mflags}

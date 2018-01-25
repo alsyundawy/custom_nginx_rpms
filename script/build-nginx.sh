@@ -26,6 +26,7 @@ git clone --single-branch --recurse-submodules -b ${HTTP_CACHE_PURGE_VERSION} ht
 git clone --single-branch --recurse-submodules -b v${HTTP_FANCYINDEX_VERSION} https://github.com/aperezdc/ngx-fancyindex.git
 git clone --single-branch --recurse-submodules -b v${NCHAN_VERSION} https://github.com/slact/nchan.git
 git clone --single-branch --recurse-submodules -b v${HTTP_UPLOADPROGRESS_VERSION} https://github.com/masterzen/nginx-upload-progress-module.git
+git clone --single-branch --recurse-submodules https://github.com/evanmiller/nginx_circle_gif.git
 
 cd $HOME/rpmbuild/SPECS
 patch -p0 < $PATCH_PATH
