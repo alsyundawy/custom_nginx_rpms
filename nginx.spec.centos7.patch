@@ -1,11 +1,11 @@
 --- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
-+++ nginx.spec	2018-01-25 09:03:46.000000000 +0100
++++ nginx.spec	2018-01-25 09:05:42.000000000 +0100
 @@ -48,7 +48,7 @@
  # end of distribution specific definitions
  
  %define main_version 1.12.2
 -%define main_release 1%{?dist}.ngx
-+%define main_release 1%{?dist}.COLUNDRUM
++%define main_release 2%{?dist}.COLUNDRUM
  
  %define bdir %{_builddir}/%{name}-%{main_version}
  
@@ -16,7 +16,7 @@
 -Version: %{main_version}
 -Release: %{main_release}
 +Version: 1.12.2
-+Release: 1%{?dist}.COLUNDRUM
++Release: 2%{?dist}.COLUNDRUM
 +Packager: COLUNDRUM <colundrum@users.noreply.github.com>
  Vendor: Nginx, Inc.
  URL: http://nginx.org/
