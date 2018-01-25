@@ -31,7 +31,7 @@ github-release release \
   --repo "$CIRCLE_PROJECT_REPONAME" \
   --tag "$RELEASE_TAG" \
   --name "$RELEASE_NAME" \
-  --description 'not release'
+  --description "not release"
 
 #
 # Upload rpm files and build a release note
@@ -63,7 +63,7 @@ Build on CentOS 7
 EOS
 
 # CentOS 7
-for i in *.el7*.centos.ngx.x86_64.rpm; do
+for i in *.el7*.COLUNDRUM.x86_64.rpm; do
   print_rpm_markdown $i >> description.md
   upload_rpm $i
 
