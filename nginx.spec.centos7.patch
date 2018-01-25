@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
-+++ nginx.spec	2018-01-25 09:05:42.000000000 +0100
++++ nginx.spec	2018-01-25 11:43:47.000000000 +0100
 @@ -48,7 +48,7 @@
  # end of distribution specific definitions
  
@@ -35,7 +35,7 @@
  
  License: 2-clause BSD-like license
  
-@@ -104,14 +112,108 @@
+@@ -104,14 +112,106 @@
      -e 's|%%PROVIDES%%|nginx-debug|g' < %{SOURCE2} > nginx-debug.init
  
  %build
@@ -63,7 +63,6 @@
 +    --with-http_gunzip_module \
 +    --with-http_gzip_static_module \
 +    --with-http_mp4_module \
-+    --with-http_random_index_module \
 +    --with-http_realip_module \
 +    --with-http_secure_link_module \
 +    --with-http_slice_module \
@@ -118,7 +117,6 @@
 +    --with-http_gunzip_module \
 +    --with-http_gzip_static_module \
 +    --with-http_mp4_module \
-+    --with-http_random_index_module \
 +    --with-http_realip_module \
 +    --with-http_secure_link_module \
 +    --with-http_slice_module \
@@ -146,7 +144,7 @@
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}"
  make %{?_smp_mflags}
-@@ -126,6 +228,8 @@
+@@ -126,6 +226,8 @@
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/fastcgi.conf
  
@@ -155,7 +153,7 @@
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/cache/nginx
-@@ -203,6 +307,7 @@
+@@ -203,6 +305,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
  %config(noreplace) %{_sysconfdir}/nginx/mime.types
  %config(noreplace) %{_sysconfdir}/nginx/fastcgi_params
@@ -163,7 +161,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/scgi_params
  %config(noreplace) %{_sysconfdir}/nginx/uwsgi_params
  %config(noreplace) %{_sysconfdir}/nginx/koi-utf
-@@ -224,6 +329,13 @@
+@@ -224,6 +327,13 @@
  
  %attr(0755,root,root) %dir %{_libdir}/nginx
  %attr(0755,root,root) %dir %{_libdir}/nginx/modules
@@ -177,7 +175,7 @@
  %dir %{_datadir}/nginx
  %dir %{_datadir}/nginx/html
  %{_datadir}/nginx/html/*
-@@ -233,6 +345,7 @@
+@@ -233,6 +343,7 @@
  
  %dir %{_datadir}/doc/%{name}-%{main_version}
  %doc %{_datadir}/doc/%{name}-%{main_version}/COPYRIGHT
@@ -185,7 +183,7 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -312,6 +425,9 @@
+@@ -312,6 +423,9 @@
  fi
  
  %changelog

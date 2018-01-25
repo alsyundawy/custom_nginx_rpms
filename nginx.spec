@@ -135,7 +135,6 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --with-http_gunzip_module \
     --with-http_gzip_static_module \
     --with-http_mp4_module \
-    --with-http_random_index_module \
     --with-http_realip_module \
     --with-http_secure_link_module \
     --with-http_slice_module \
@@ -189,7 +188,6 @@ make %{?_smp_mflags}
     --with-http_gunzip_module \
     --with-http_gzip_static_module \
     --with-http_mp4_module \
-    --with-http_random_index_module \
     --with-http_realip_module \
     --with-http_secure_link_module \
     --with-http_slice_module \
