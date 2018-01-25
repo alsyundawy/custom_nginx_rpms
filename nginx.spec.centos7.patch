@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
-+++ nginx.spec	2018-01-25 01:24:46.000000000 +0100
++++ nginx.spec	2018-01-25 08:08:56.000000000 +0100
 @@ -48,7 +48,7 @@
  # end of distribution specific definitions
  
@@ -156,7 +156,17 @@
  
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
-@@ -224,6 +328,13 @@
+@@ -202,7 +306,9 @@
+ %config(noreplace) %{_sysconfdir}/nginx/nginx.conf
+ %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
+ %config(noreplace) %{_sysconfdir}/nginx/mime.types
++%config(noreplace) %{_sysconfdir}/nginx/fastcgi.conf
+ %config(noreplace) %{_sysconfdir}/nginx/fastcgi_params
++%config(noreplace) %{_sysconfdir}/nginx/naxsi_core.rules
+ %config(noreplace) %{_sysconfdir}/nginx/scgi_params
+ %config(noreplace) %{_sysconfdir}/nginx/uwsgi_params
+ %config(noreplace) %{_sysconfdir}/nginx/koi-utf
+@@ -224,6 +330,13 @@
  
  %attr(0755,root,root) %dir %{_libdir}/nginx
  %attr(0755,root,root) %dir %{_libdir}/nginx/modules
@@ -170,7 +180,7 @@
  %dir %{_datadir}/nginx
  %dir %{_datadir}/nginx/html
  %{_datadir}/nginx/html/*
-@@ -233,6 +344,7 @@
+@@ -233,6 +346,7 @@
  
  %dir %{_datadir}/doc/%{name}-%{main_version}
  %doc %{_datadir}/doc/%{name}-%{main_version}/COPYRIGHT
@@ -178,7 +188,7 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -312,6 +424,9 @@
+@@ -312,6 +426,9 @@
  fi
  
  %changelog
