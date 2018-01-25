@@ -133,7 +133,7 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --with-http_addition_module \
     --with-http_auth_request_module \
     --with-http_dav_module \
-    --with-http_flv_module \
+    --without-http_flv_module \
     --with-http_gunzip_module \
     --with-http_gzip_static_module \
     --with-http_mp4_module \
@@ -145,8 +145,8 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --with-http_stub_status_module \
     --with-http_sub_module \
     --with-http_v2_module \
-    --with-mail \
-    --with-mail_ssl_module \
+    --without-mail \
+    --without-mail_ssl_module \
     --with-stream \
     --with-stream_realip_module \
     --with-stream_ssl_module \
@@ -191,7 +191,7 @@ make %{?_smp_mflags}
     --with-http_addition_module \
     --with-http_auth_request_module \
     --with-http_dav_module \
-    --with-http_flv_module \
+    --without-http_flv_module \
     --with-http_gunzip_module \
     --with-http_gzip_static_module \
     --with-http_mp4_module \
@@ -203,8 +203,8 @@ make %{?_smp_mflags}
     --with-http_stub_status_module \
     --with-http_sub_module \
     --with-http_v2_module \
-    --with-mail \
-    --with-mail_ssl_module \
+    --without-mail \
+    --without-mail_ssl_module \
     --with-stream \
     --with-stream_realip_module \
     --with-stream_ssl_module \
@@ -234,7 +234,7 @@ make %{?_smp_mflags}
 %{__mv} $RPM_BUILD_ROOT%{_sysconfdir}/nginx/html $RPM_BUILD_ROOT%{_datadir}/nginx/
 
 %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
-%{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/fastcgi.conf
+%{__install} -m 644 -p $RPM_BUILD_ROOT/../../SOURCES/naxsi-0.55.3/naxsi_config/naxsi_core.rules $RPM_BUILD_ROOT%{_sysconfdir}/nginx/
 
 %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
 %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
@@ -308,9 +308,6 @@ cd $RPM_BUILD_ROOT%{_sysconfdir}/nginx && \
 %dir %{_sysconfdir}/nginx
 %dir %{_sysconfdir}/nginx/conf.d
 %{_sysconfdir}/nginx/modules
-%{_libdir}/perl5/vendor_perl/auto/nginx
-%{_libdir}/perl5/vendor_perl/nginx.pm
-%{_libdir}/perl5/perllocal.pod
 
 %config(noreplace) %{_sysconfdir}/nginx/nginx.conf
 %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
@@ -337,6 +334,13 @@ cd $RPM_BUILD_ROOT%{_sysconfdir}/nginx && \
 
 %attr(0755,root,root) %dir %{_libdir}/nginx
 %attr(0755,root,root) %dir %{_libdir}/nginx/modules
+%{_libdir}/nginx/modules/ngx_http_geoip_module.so
+%{_libdir}/nginx/modules/ngx_http_image_filter_module.so
+%{_libdir}/nginx/modules/ngx_http_perl_module.so
+%{_libdir}/nginx/modules/ngx_http_xslt_filter_module.so
+%{_libdir}/perl5/vendor_perl/auto/nginx
+%{_libdir}/perl5/vendor_perl/nginx.pm
+%{_libdir}/perl5/perllocal.pod
 %dir %{_datadir}/nginx
 %dir %{_datadir}/nginx/html
 %{_datadir}/nginx/html/*

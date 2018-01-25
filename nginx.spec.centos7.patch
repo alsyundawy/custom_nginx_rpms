@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
-+++ nginx.spec	2018-01-25 00:59:45.000000000 +0100
++++ nginx.spec	2018-01-25 01:18:00.000000000 +0100
 @@ -48,7 +48,7 @@
  # end of distribution specific definitions
  
@@ -60,7 +60,7 @@
 +    --with-http_addition_module \
 +    --with-http_auth_request_module \
 +    --with-http_dav_module \
-+    --with-http_flv_module \
++    --without-http_flv_module \
 +    --with-http_gunzip_module \
 +    --with-http_gzip_static_module \
 +    --with-http_mp4_module \
@@ -72,8 +72,8 @@
 +    --with-http_stub_status_module \
 +    --with-http_sub_module \
 +    --with-http_v2_module \
-+    --with-mail \
-+    --with-mail_ssl_module \
++    --without-mail \
++    --without-mail_ssl_module \
 +    --with-stream \
 +    --with-stream_realip_module \
 +    --with-stream_ssl_module \
@@ -119,7 +119,7 @@
 +    --with-http_addition_module \
 +    --with-http_auth_request_module \
 +    --with-http_dav_module \
-+    --with-http_flv_module \
++    --without-http_flv_module \
 +    --with-http_gunzip_module \
 +    --with-http_gzip_static_module \
 +    --with-http_mp4_module \
@@ -131,8 +131,8 @@
 +    --with-http_stub_status_module \
 +    --with-http_sub_module \
 +    --with-http_v2_module \
-+    --with-mail \
-+    --with-mail_ssl_module \
++    --without-mail \
++    --without-mail_ssl_module \
 +    --with-stream \
 +    --with-stream_realip_module \
 +    --with-stream_ssl_module \
@@ -153,17 +153,30 @@
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}"
  make %{?_smp_mflags}
-@@ -198,6 +308,9 @@
- %dir %{_sysconfdir}/nginx
- %dir %{_sysconfdir}/nginx/conf.d
- %{_sysconfdir}/nginx/modules
+@@ -124,7 +234,7 @@
+ %{__mv} $RPM_BUILD_ROOT%{_sysconfdir}/nginx/html $RPM_BUILD_ROOT%{_datadir}/nginx/
+ 
+ %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
+-%{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/fastcgi.conf
++%{__install} -m 644 -p $RPM_BUILD_ROOT/../../SOURCES/naxsi-0.55.3/naxsi_config/naxsi_core.rules $RPM_BUILD_ROOT%{_sysconfdir}/nginx/
+ 
+ %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
+ %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
+@@ -224,6 +334,13 @@
+ 
+ %attr(0755,root,root) %dir %{_libdir}/nginx
+ %attr(0755,root,root) %dir %{_libdir}/nginx/modules
++%{_libdir}/nginx/modules/ngx_http_geoip_module.so
++%{_libdir}/nginx/modules/ngx_http_image_filter_module.so
++%{_libdir}/nginx/modules/ngx_http_perl_module.so
++%{_libdir}/nginx/modules/ngx_http_xslt_filter_module.so
 +%{_libdir}/perl5/vendor_perl/auto/nginx
 +%{_libdir}/perl5/vendor_perl/nginx.pm
 +%{_libdir}/perl5/perllocal.pod
- 
- %config(noreplace) %{_sysconfdir}/nginx/nginx.conf
- %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
-@@ -233,6 +346,7 @@
+ %dir %{_datadir}/nginx
+ %dir %{_datadir}/nginx/html
+ %{_datadir}/nginx/html/*
+@@ -233,6 +350,7 @@
  
  %dir %{_datadir}/doc/%{name}-%{main_version}
  %doc %{_datadir}/doc/%{name}-%{main_version}/COPYRIGHT
@@ -171,7 +184,7 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -312,6 +426,9 @@
+@@ -312,6 +430,9 @@
  fi
  
  %changelog
