@@ -133,7 +133,6 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --with-http_addition_module \
     --with-http_auth_request_module \
     --with-http_dav_module \
-    --without-http_flv_module \
     --with-http_gunzip_module \
     --with-http_gzip_static_module \
     --with-http_mp4_module \
@@ -145,8 +144,6 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --with-http_stub_status_module \
     --with-http_sub_module \
     --with-http_v2_module \
-    --without-mail \
-    --without-mail_ssl_module \
     --with-stream \
     --with-stream_realip_module \
     --with-stream_ssl_module \
@@ -191,7 +188,6 @@ make %{?_smp_mflags}
     --with-http_addition_module \
     --with-http_auth_request_module \
     --with-http_dav_module \
-    --without-http_flv_module \
     --with-http_gunzip_module \
     --with-http_gzip_static_module \
     --with-http_mp4_module \
@@ -203,8 +199,6 @@ make %{?_smp_mflags}
     --with-http_stub_status_module \
     --with-http_sub_module \
     --with-http_v2_module \
-    --without-mail \
-    --without-mail_ssl_module \
     --with-stream \
     --with-stream_realip_module \
     --with-stream_ssl_module \

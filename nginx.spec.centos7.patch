@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
-+++ nginx.spec	2018-01-25 01:18:00.000000000 +0100
++++ nginx.spec	2018-01-25 01:24:46.000000000 +0100
 @@ -48,7 +48,7 @@
  # end of distribution specific definitions
  
@@ -34,7 +34,7 @@
  
  License: 2-clause BSD-like license
  
-@@ -104,14 +112,116 @@
+@@ -104,14 +112,110 @@
      -e 's|%%PROVIDES%%|nginx-debug|g' < %{SOURCE2} > nginx-debug.init
  
  %build
@@ -60,7 +60,6 @@
 +    --with-http_addition_module \
 +    --with-http_auth_request_module \
 +    --with-http_dav_module \
-+    --without-http_flv_module \
 +    --with-http_gunzip_module \
 +    --with-http_gzip_static_module \
 +    --with-http_mp4_module \
@@ -72,8 +71,6 @@
 +    --with-http_stub_status_module \
 +    --with-http_sub_module \
 +    --with-http_v2_module \
-+    --without-mail \
-+    --without-mail_ssl_module \
 +    --with-stream \
 +    --with-stream_realip_module \
 +    --with-stream_ssl_module \
@@ -119,7 +116,6 @@
 +    --with-http_addition_module \
 +    --with-http_auth_request_module \
 +    --with-http_dav_module \
-+    --without-http_flv_module \
 +    --with-http_gunzip_module \
 +    --with-http_gzip_static_module \
 +    --with-http_mp4_module \
@@ -131,8 +127,6 @@
 +    --with-http_stub_status_module \
 +    --with-http_sub_module \
 +    --with-http_v2_module \
-+    --without-mail \
-+    --without-mail_ssl_module \
 +    --with-stream \
 +    --with-stream_realip_module \
 +    --with-stream_ssl_module \
@@ -153,7 +147,7 @@
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}"
  make %{?_smp_mflags}
-@@ -124,7 +234,7 @@
+@@ -124,7 +228,7 @@
  %{__mv} $RPM_BUILD_ROOT%{_sysconfdir}/nginx/html $RPM_BUILD_ROOT%{_datadir}/nginx/
  
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
@@ -162,7 +156,7 @@
  
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
-@@ -224,6 +334,13 @@
+@@ -224,6 +328,13 @@
  
  %attr(0755,root,root) %dir %{_libdir}/nginx
  %attr(0755,root,root) %dir %{_libdir}/nginx/modules
@@ -176,7 +170,7 @@
  %dir %{_datadir}/nginx
  %dir %{_datadir}/nginx/html
  %{_datadir}/nginx/html/*
-@@ -233,6 +350,7 @@
+@@ -233,6 +344,7 @@
  
  %dir %{_datadir}/doc/%{name}-%{main_version}
  %doc %{_datadir}/doc/%{name}-%{main_version}/COPYRIGHT
@@ -184,7 +178,7 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -312,6 +430,9 @@
+@@ -312,6 +424,9 @@
  fi
  
  %changelog
