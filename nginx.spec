@@ -24,6 +24,18 @@ Epoch: %{epoch}
 Requires(pre): shadow-utils
 Requires: systemd
 BuildRequires: systemd
+Requires: gd
+BuildRequires: gd-devel
+Requires: libxml2
+BuildRequires: libxml2-devel
+Requires: libxslt
+BuildRequires: libxslt-devel
+Requires: perl-ExtUtils-Embed
+BuildRequires: perl-ExtUtils-Embed
+Requires: GeoIP
+BuildRequires: GeoIP-devel
+Requires: pam
+BuildRequires: pam-devel
 %define os_minor %(lsb_release -rs | cut -d '.' -f 2)
 %if %{os_minor} >= 4
 Requires: openssl >= 1.0.2
