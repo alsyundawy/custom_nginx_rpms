@@ -241,7 +241,7 @@ make %{?_smp_mflags}
 %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
 %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/fastcgi.conf
 
-%{__install} -m 644 -p $RPM_BUILD_ROOT/../../SOURCES/naxsi-0.55.3/naxsi_config/naxsi_core.rules $RPM_BUILD_ROOT%{_sysconfdir}/nginx/
+%{__install} -m 644 -p $RPM_BUILD_ROOT/../../SOURCES/naxsi/naxsi_config/naxsi_core.rules $RPM_BUILD_ROOT%{_sysconfdir}/nginx/
 
 %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
 %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
