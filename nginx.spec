@@ -36,6 +36,8 @@ Requires: GeoIP
 BuildRequires: GeoIP-devel
 Requires: pam
 BuildRequires: pam-devel
+Requires: ImageMagick
+BuildRequires: ImageMagick-devel
 %define os_minor %(lsb_release -rs | cut -d '.' -f 2)
 %if %{os_minor} >= 4
 Requires: openssl >= 1.0.2
