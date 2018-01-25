@@ -91,13 +91,6 @@ Source10: nginx.suse.logrotate
 Source11: nginx-debug.service
 Source12: COPYRIGHT
 Source13: nginx.check-reload.sh
-Source14: headers-more-nginx-module-0.33.tar.gz
-Source15: naxsi-0.55.3.tar.gz
-Source16: http-auth-pam-1.5.1.tar.gz
-Source17: http-cache-purge-2.3.tar.gz
-Source18: http-fancyindex-0.4.2.tar.gz
-Source19: nchan-1.1.14.tar.gz
-Source20: http-uploadprogress-0.9.2.tar.gz
 
 License: 2-clause BSD-like license
 
@@ -172,6 +165,9 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --add-module=../../SOURCES/nginx-upload-progress-module \
     --add-module=../../SOURCES/ngx_brotli \
     --add-module=../../SOURCE5/nginx_circle_gif \
+    --add-module=../../SOURCE5/nginx-openssl-version \
+    --add-module=../../SOURCE5/ngx_log_if \
+    --add-module=../../SOURCE5/ngx_http_internal_redirect \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}" \
     --with-debug
@@ -226,6 +222,9 @@ make %{?_smp_mflags}
     --add-module=../../SOURCES/nginx-upload-progress-module \
     --add-module=../../SOURCES/ngx_brotli \
     --add-module=../../SOURCE5/nginx_circle_gif \
+    --add-module=../../SOURCE5/nginx-openssl-version \
+    --add-module=../../SOURCE5/ngx_log_if \
+    --add-module=../../SOURCE5/ngx_http_internal_redirect \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}"
 make %{?_smp_mflags}

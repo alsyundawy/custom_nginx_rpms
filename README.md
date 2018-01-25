@@ -38,6 +38,9 @@
   - [fancyindex](https://github.com/aperezdc/ngx-fancyindex)
   - [naxsi](https://github.com/nbs-system/naxsi)
   - [nchan](https://github.com/slact/nchan)
+  - [ngx_http_internal_redirect](https://github.com/flygoast/ngx_http_internal_redirect)
+  - [nginx-openssl-version](https://github.com/apcera/nginx-openssl-version)
+  - [nx_log_if](https://github.com/cfsego/ngx_log_if)
   - [upload-progress](https://github.com/masterzen/nginx-upload-progress-module)
 
 You can build RPM with headers-more-module using the official SRPM.

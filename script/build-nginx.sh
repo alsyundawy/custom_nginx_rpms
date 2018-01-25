@@ -5,13 +5,15 @@ CENTOS_MAJOR_VERSION=$(rpm -q --qf '%{VERSION}' $(rpm -q --whatprovides redhat-r
 PATCH_PATH=$HOME/nginx.spec.centos${CENTOS_MAJOR_VERSION}.patch
 
 NGINX_VERSION=$(grep '^+Version:' $PATCH_PATH | cut -d ' ' -f 2)
-NAXSI_VERSION=$(grep 'naxsi-.*\.tar\.gz' $PATCH_PATH | cut -d ' ' -f 2 | sed -e 's@naxsi-\([0-9]\+\)\.\([0-9]\+\)\.\([0-9]\+\)\.tar\.gz@\1.\2.\3@')
-HEADERS_MORE_VERSION=$(grep 'headers-more-nginx-module-.*\.tar\.gz' $PATCH_PATH | cut -d ' ' -f 2 | sed -e 's@headers-more-nginx-module-\([0-9]\+\)\.\([0-9]\+\)\.tar\.gz@\1.\2@')
-HTTP_AUTH_PAM_VERSION=$(grep 'http-auth-pam-.*\.tar\.gz' $PATCH_PATH | cut -d ' ' -f 2 | sed -e 's@http-auth-pam-\([0-9]\+\)\.\([0-9]\+\)\.\([0-9]\+\)\.tar\.gz@\1.\2.\3@')
-HTTP_CACHE_PURGE_VERSION=$(grep 'http-cache-purge-.*\.tar\.gz' $PATCH_PATH | cut -d ' ' -f 2 | sed -e 's@http-cache-purge-\([0-9]\+\)\.\([0-9]\+\)\.tar\.gz@\1.\2@')
-HTTP_FANCYINDEX_VERSION=$(grep 'http-fancyindex-.*\.tar\.gz' $PATCH_PATH | cut -d ' ' -f 2 | sed -e 's@http-fancyindex-\([0-9]\+\)\.\([0-9]\+\)\.\([0-9]\+\)\.tar\.gz@\1.\2.\3@')
-NCHAN_VERSION=$(grep 'nchan-.*\.tar\.gz' $PATCH_PATH | cut -d ' ' -f 2 | sed -e 's@nchan-\([0-9]\+\)\.\([0-9]\+\)\.\([0-9]\+\)\.tar\.gz@\1.\2.\3@')
-HTTP_UPLOADPROGRESS_VERSION=$(grep 'http-uploadprogress-.*\.tar\.gz' $PATCH_PATH | cut -d ' ' -f 2 | sed -e 's@http-uploadprogress-\([0-9]\+\)\.\([0-9]\+\)\.\([0-9]\+\)\.tar\.gz@\1.\2.\3@')
+NAXSI_VERSION=0.55.3
+HEADERS_MORE_VERSION=0.33
+HTTP_AUTH_PAM_VERSION=1.5.1
+HTTP_CACHE_PURGE_VERSION=2.3
+HTTP_FANCYINDEX_VERSION=0.4.2
+NCHAN_VERSION=1.1.14
+HTTP_UPLOADPROGRESS_VERSION=0.9.2
+NGINX_OPENSSL_VERSION=v0.04
+HTTP_INTERNAL_REDIRECT_VERSION=0.6
 
 NGINX_SRPM_FILE=nginx-${NGINX_VERSION}-1.el${CENTOS_MAJOR_VERSION}_4.ngx.src.rpm
 curl -LO http://nginx.org/packages/centos/${CENTOS_MAJOR_VERSION}/SRPMS/${NGINX_SRPM_FILE}
@@ -27,6 +29,9 @@ git clone --single-branch --recurse-submodules -b v${HTTP_FANCYINDEX_VERSION} ht
 git clone --single-branch --recurse-submodules -b v${NCHAN_VERSION} https://github.com/slact/nchan.git
 git clone --single-branch --recurse-submodules -b v${HTTP_UPLOADPROGRESS_VERSION} https://github.com/masterzen/nginx-upload-progress-module.git
 git clone --single-branch --recurse-submodules https://github.com/evanmiller/nginx_circle_gif.git
+git clone --single-branch --recurse-submodules -b v${NGINX_OPENSSL_VERSION} https://github.com/apcera/nginx-openssl-version.git
+git clone --single-branch --recurse-submodules https://github.com/cfsego/ngx_log_if.git
+git clone --single-branch --recurse-submodules -b v${HTTP_INTERNAL_REDIRECT_VERSION} https://github.com/flygoast/ngx_http_internal_redirect.git
 
 cd $HOME/rpmbuild/SPECS
 patch -p0 < $PATCH_PATH
