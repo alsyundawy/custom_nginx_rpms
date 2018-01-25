@@ -308,8 +308,9 @@ cd $RPM_BUILD_ROOT%{_sysconfdir}/nginx && \
 %dir %{_sysconfdir}/nginx
 %dir %{_sysconfdir}/nginx/conf.d
 %{_sysconfdir}/nginx/modules
-%dir %{_libdir}/nginx/modules
-%dir %{_libdir}/perl5/vendor_perl/auto/nginx
+%{_libdir}/perl5/vendor_perl/auto/nginx
+%{_libdir}/perl5/vendor_perl/nginx.pm
+%{_libdir}/perl5/perllocal.pod
 
 %config(noreplace) %{_sysconfdir}/nginx/nginx.conf
 %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf

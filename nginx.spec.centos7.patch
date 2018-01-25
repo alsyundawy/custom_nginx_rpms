@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
-+++ nginx.spec	2018-01-25 00:45:24.000000000 +0100
++++ nginx.spec	2018-01-25 00:59:45.000000000 +0100
 @@ -48,7 +48,7 @@
  # end of distribution specific definitions
  
@@ -153,16 +153,17 @@
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}"
  make %{?_smp_mflags}
-@@ -198,6 +308,8 @@
+@@ -198,6 +308,9 @@
  %dir %{_sysconfdir}/nginx
  %dir %{_sysconfdir}/nginx/conf.d
  %{_sysconfdir}/nginx/modules
-+%dir %{_libdir}/nginx/modules
-+%dir %{_libdir}/perl5/vendor_perl/auto/nginx
++%{_libdir}/perl5/vendor_perl/auto/nginx
++%{_libdir}/perl5/vendor_perl/nginx.pm
++%{_libdir}/perl5/perllocal.pod
  
  %config(noreplace) %{_sysconfdir}/nginx/nginx.conf
  %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
-@@ -233,6 +345,7 @@
+@@ -233,6 +346,7 @@
  
  %dir %{_datadir}/doc/%{name}-%{main_version}
  %doc %{_datadir}/doc/%{name}-%{main_version}/COPYRIGHT
@@ -170,7 +171,7 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -312,6 +425,9 @@
+@@ -312,6 +426,9 @@
  fi
  
  %changelog
