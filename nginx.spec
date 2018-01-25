@@ -72,7 +72,7 @@ BuildRequires: systemd
 Summary: High performance web server
 Name: nginx
 Version: 1.12.2
-Release: 3%{?dist}.COLUNDRUM
+Release: 4%{?dist}.COLUNDRUM
 Packager: COLUNDRUM <colundrum@users.noreply.github.com>
 Vendor: Nginx, Inc.
 URL: http://nginx.org/
