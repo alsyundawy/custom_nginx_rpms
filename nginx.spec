@@ -40,6 +40,12 @@ Requires: ImageMagick
 BuildRequires: ImageMagick-devel
 Requires: zeromq
 BuildRequires: zeromq-devel
+Requires: glibc
+BuildRequires: glibc-headers
+Requires: ffmpeg
+BuildRequires: ffmpeg-devel
+Requires: fdk-aac
+BuildRequires: fdk-aac-devel
 %define os_minor %(lsb_release -rs | cut -d '.' -f 2)
 %if %{os_minor} >= 4
 Requires: openssl >= 1.0.2
@@ -64,7 +70,7 @@ BuildRequires: systemd
 # end of distribution specific definitions
 
 %define main_version 1.12.2
-%define main_release 5%{?dist}.COLUNDRUM
+%define main_release 6%{?dist}.COLUNDRUM
 
 %define bdir %{_builddir}/%{name}-%{main_version}
 
@@ -76,7 +82,7 @@ BuildRequires: systemd
 Summary: High performance web server
 Name: nginx
 Version: 1.12.2
-Release: 5%{?dist}.COLUNDRUM
+Release: 6%{?dist}.COLUNDRUM
 Packager: COLUNDRUM <colundrum@users.noreply.github.com>
 Vendor: Nginx, Inc.
 URL: http://nginx.org/
