@@ -1,11 +1,6 @@
 #!/bin/sh
 set -xe
 
-export LD_LIBRARY_PATH=/usr/local/lib/
-echo /usr/local/lib >> /etc/ld.so.conf.d/custom-libs.conf
-ldconfig
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-
 CENTOS_MAJOR_VERSION=$(rpm -q --qf '%{VERSION}' $(rpm -q --whatprovides redhat-release))
 PATCH_PATH=$HOME/nginx.spec.centos${CENTOS_MAJOR_VERSION}.patch
 
