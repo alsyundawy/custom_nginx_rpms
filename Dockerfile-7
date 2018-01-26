@@ -2,11 +2,12 @@ FROM centos:7
 MAINTAINER COLUNDRUM
 
 # setup
+RUN yum install -y epel-release
 RUN yum update -y
 RUN yum install -y gcc make rpm-build tar redhat-lsb-core
 
 # nginx dependencies
-RUN yum -y install git openssl-devel pcre-devel zlib-devel libxml2-devel libxslt-devel gd-devel perl-ExtUtils-Embed GeoIP-devel pam-devel ImageMagick-devel
+RUN yum -y install git openssl-devel pcre-devel zlib-devel libxml2-devel libxslt-devel gd-devel perl-ExtUtils-Embed GeoIP-devel pam-devel ImageMagick-devel zeromq-devel
 
 # rpmbuild command recommends to use `builder:builder` as user:group.
 RUN useradd -u 1000 builder
