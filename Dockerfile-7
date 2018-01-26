@@ -10,10 +10,6 @@ RUN yum install -y gcc make rpm-build tar redhat-lsb-core
 
 # nginx dependencies
 RUN yum -y install git openssl-devel pcre-devel zlib-devel libxml2-devel libxslt-devel gd-devel perl-ExtUtils-Embed GeoIP-devel pam-devel ImageMagick-devel zeromq-devel glibc-headers ffmpeg-devel ffmpeg-compat-devel fdk-aac-devel
-RUN export LD_LIBRARY_PATH=/usr/local/lib/
-RUN echo /usr/local/lib >> /etc/ld.so.conf.d/custom-libs.conf
-RUN ldconfig
-RUN export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
 # rpmbuild command recommends to use `builder:builder` as user:group.
 RUN useradd -u 1000 builder
