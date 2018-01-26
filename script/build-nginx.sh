@@ -5,15 +5,18 @@ CENTOS_MAJOR_VERSION=$(rpm -q --qf '%{VERSION}' $(rpm -q --whatprovides redhat-r
 PATCH_PATH=$HOME/nginx.spec.centos${CENTOS_MAJOR_VERSION}.patch
 
 NGINX_VERSION=$(grep '^+Version:' $PATCH_PATH | cut -d ' ' -f 2)
-NAXSI_VERSION=0.55.3
+
 HEADERS_MORE_VERSION=0.33
+HTTP_ACCOUNTING_MODULE=0.5
 HTTP_AUTH_PAM_VERSION=1.5.1
 HTTP_CACHE_PURGE_VERSION=2.3
 HTTP_FANCYINDEX_VERSION=0.4.2
-NCHAN_VERSION=1.1.14
-HTTP_UPLOADPROGRESS_VERSION=0.9.2
-NGINX_OPENSSL_VERSION=0.04
 HTTP_INTERNAL_REDIRECT_VERSION=0.6
+HTTP_UPLOADPROGRESS_VERSION=0.9.2
+NAXSI_VERSION=0.55.3
+NCHAN_VERSION=1.1.14
+NGINX_OPENSSL_VERSION=0.04
+NGINX_PUSH_STREAM_VERSION=0.5.4
 
 NGINX_SRPM_FILE=nginx-${NGINX_VERSION}-1.el${CENTOS_MAJOR_VERSION}_4.ngx.src.rpm
 curl -LO http://nginx.org/packages/centos/${CENTOS_MAJOR_VERSION}/SRPMS/${NGINX_SRPM_FILE}
@@ -32,6 +35,10 @@ git clone --single-branch --recurse-submodules https://github.com/evanmiller/ngi
 git clone --single-branch --recurse-submodules -b v${NGINX_OPENSSL_VERSION} https://github.com/apcera/nginx-openssl-version.git
 git clone --single-branch --recurse-submodules https://github.com/cfsego/ngx_log_if.git
 git clone --single-branch --recurse-submodules -b v${HTTP_INTERNAL_REDIRECT_VERSION} https://github.com/flygoast/ngx_http_internal_redirect.git
+git clone --single-branch --recurse-submodules -b ${NGINX_PUSH_STREAM_VERSION} https://github.com/wandenberg/nginx-push-stream-module.git
+git clone --single-branch --recurse-submodules https://github.com/flant/nginx-http-rdns.git
+git clone --single-branch --recurse-submodules https://github.com/alticelabs/nginx-log-zmq.git
+git clone --single-branch --recurse-submodules -b v${HTTP_ACCOUNTING_MODULE} https://github.com/Lax/ngx_http_accounting_module.git
 
 cd $HOME/rpmbuild/SPECS
 patch -p0 < $PATCH_PATH

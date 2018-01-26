@@ -32,15 +32,21 @@
 
 
 - External modules :
-  - [auth-pam](https://github.com/sto/ngx_http_auth_pam_module<Paste>)
-  - [cache-purge](https://github.com/FRiCKLE/ngx_cache_purge)
   - [headers-more](https://github.com/openresty/headers-more-nginx-module)
-  - [fancyindex](https://github.com/aperezdc/ngx-fancyindex)
   - [naxsi](https://github.com/nbs-system/naxsi)
   - [nchan](https://github.com/slact/nchan)
-  - [ngx_http_internal_redirect](https://github.com/flygoast/ngx_http_internal_redirect)
+  - [nginx_circle_gif](https://github.com/evanmiller/nginx_circle_gif)
+  - [nginx-http-rdns](https://github.com/flant/nginx-http-rdns)
+  - [nginx-log-zmq](https://github.com/alticelabs/nginx-log-zmq)
   - [nginx-openssl-version](https://github.com/apcera/nginx-openssl-version)
-  - [nx_log_if](https://github.com/cfsego/ngx_log_if)
+  - [nginx-push-stream-module](https://github.com/wandenberg/nginx-push-stream-module)
+  - [ngx_brotli](https://github.com/google/ngx_brotli)
+  - [ngx_cache_purge](https://github.com/FRiCKLE/ngx_cache_purge)
+  - [ngx_http_accounting_module](https://github.com/Lax/ngx_http_accounting_module)
+  - [ngx_http_auth_pam](https://github.com/sto/ngx_http_auth_pam_module)
+  - [ngx_http_internal_redirect](https://github.com/flygoast/ngx_http_internal_redirect)
+  - [ngx_log_if](https://github.com/cfsego/ngx_log_if)
+  - [ngx-fancyindex](https://github.com/aperezdc/ngx-fancyindex)
   - [upload-progress](https://github.com/masterzen/nginx-upload-progress-module)
 
 You can build RPM with headers-more-module using the official SRPM.

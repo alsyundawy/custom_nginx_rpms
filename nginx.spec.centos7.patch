@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
-+++ nginx.spec	2018-01-25 19:16:21.000000000 +0100
++++ nginx.spec	2018-01-26 15:34:18.000000000 +0100
 @@ -24,6 +24,20 @@
  Requires(pre): shadow-utils
  Requires: systemd
@@ -26,7 +26,7 @@
  
  %define main_version 1.12.2
 -%define main_release 1%{?dist}.ngx
-+%define main_release 3%{?dist}.COLUNDRUM
++%define main_release 5%{?dist}.COLUNDRUM
  
  %define bdir %{_builddir}/%{name}-%{main_version}
  
@@ -37,12 +37,12 @@
 -Version: %{main_version}
 -Release: %{main_release}
 +Version: 1.12.2
-+Release: 4%{?dist}.COLUNDRUM
++Release: 5%{?dist}.COLUNDRUM
 +Packager: COLUNDRUM <colundrum@users.noreply.github.com>
  Vendor: Nginx, Inc.
  URL: http://nginx.org/
  Group: %{_group}
-@@ -104,14 +119,114 @@
+@@ -104,14 +119,122 @@
      -e 's|%%PROVIDES%%|nginx-debug|g' < %{SOURCE2} > nginx-debug.init
  
  %build
@@ -86,18 +86,22 @@
 +    --with-http_image_filter_module=dynamic \
 +    --with-http_perl_module=dynamic \
 +    --with-http_xslt_module=dynamic \
-+    --add-module=../../SOURCES/naxsi/naxsi_src \
 +    --add-module=../../SOURCES/headers-more-nginx-module \
-+    --add-module=../../SOURCES/ngx_http_auth_pam_module \
-+    --add-module=../../SOURCES/ngx_cache_purge \
-+    --add-module=../../SOURCES/ngx-fancyindex \
++    --add-module=../../SOURCES/naxsi/naxsi_src \
 +    --add-module=../../SOURCES/nchan \
-+    --add-module=../../SOURCES/nginx-upload-progress-module \
-+    --add-module=../../SOURCES/ngx_brotli \
 +    --add-module=../../SOURCES/nginx_circle_gif \
++    --add-module=../../SOURCES/nginx-http-rdns \
++    --add-module=../../SOURCES/nginx-log-zmq \
 +    --add-module=../../SOURCES/nginx-openssl-version \
-+    --add-module=../../SOURCES/ngx_log_if \
++    --add-module=../../SOURCES/nginx-push-stream-module \
++    --add-module=../../SOURCES/nginx-upload-progress-module \
++    --add-module=../../SOURCES/ngx_cache_purge \
++    --add-module=../../SOURCES/ngx_brotli \
++    --add-module=../../SOURCES/ngx_http_accounting_module \
++    --add-module=../../SOURCES/ngx_http_auth_pam_module \
 +    --add-module=../../SOURCES/ngx_http_internal_redirect \
++    --add-module=../../SOURCES/ngx_log_if \
++    --add-module=../../SOURCES/ngx-fancyindex \
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}" \
      --with-debug
@@ -144,22 +148,26 @@
 +    --with-http_image_filter_module=dynamic \
 +    --with-http_perl_module=dynamic \
 +    --with-http_xslt_module=dynamic \
-+    --add-module=../../SOURCES/naxsi/naxsi_src \
 +    --add-module=../../SOURCES/headers-more-nginx-module \
-+    --add-module=../../SOURCES/ngx_http_auth_pam_module \
-+    --add-module=../../SOURCES/ngx_cache_purge \
-+    --add-module=../../SOURCES/ngx-fancyindex \
++    --add-module=../../SOURCES/naxsi/naxsi_src \
 +    --add-module=../../SOURCES/nchan \
-+    --add-module=../../SOURCES/nginx-upload-progress-module \
-+    --add-module=../../SOURCES/ngx_brotli \
 +    --add-module=../../SOURCES/nginx_circle_gif \
++    --add-module=../../SOURCES/nginx-http-rdns \
++    --add-module=../../SOURCES/nginx-log-zmq \
 +    --add-module=../../SOURCES/nginx-openssl-version \
-+    --add-module=../../SOURCES/ngx_log_if \
++    --add-module=../../SOURCES/nginx-push-stream-module \
++    --add-module=../../SOURCES/nginx-upload-progress-module \
++    --add-module=../../SOURCES/ngx_cache_purge \
++    --add-module=../../SOURCES/ngx_brotli \
++    --add-module=../../SOURCES/ngx_http_accounting_module \
++    --add-module=../../SOURCES/ngx_http_auth_pam_module \
 +    --add-module=../../SOURCES/ngx_http_internal_redirect \
++    --add-module=../../SOURCES/ngx_log_if \
++    --add-module=../../SOURCES/ngx-fancyindex \
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}"
  make %{?_smp_mflags}
-@@ -126,6 +241,8 @@
+@@ -126,6 +249,8 @@
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/fastcgi.conf
  
@@ -168,7 +176,7 @@
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/cache/nginx
-@@ -203,6 +320,7 @@
+@@ -203,6 +328,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
  %config(noreplace) %{_sysconfdir}/nginx/mime.types
  %config(noreplace) %{_sysconfdir}/nginx/fastcgi_params
@@ -176,7 +184,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/scgi_params
  %config(noreplace) %{_sysconfdir}/nginx/uwsgi_params
  %config(noreplace) %{_sysconfdir}/nginx/koi-utf
-@@ -224,6 +342,13 @@
+@@ -224,6 +350,13 @@
  
  %attr(0755,root,root) %dir %{_libdir}/nginx
  %attr(0755,root,root) %dir %{_libdir}/nginx/modules
@@ -190,7 +198,7 @@
  %dir %{_datadir}/nginx
  %dir %{_datadir}/nginx/html
  %{_datadir}/nginx/html/*
-@@ -233,6 +358,7 @@
+@@ -233,6 +366,7 @@
  
  %dir %{_datadir}/doc/%{name}-%{main_version}
  %doc %{_datadir}/doc/%{name}-%{main_version}/COPYRIGHT
@@ -198,7 +206,7 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -312,6 +438,9 @@
+@@ -312,6 +446,9 @@
  fi
  
  %changelog

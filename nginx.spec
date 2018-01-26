@@ -62,7 +62,7 @@ BuildRequires: systemd
 # end of distribution specific definitions
 
 %define main_version 1.12.2
-%define main_release 3%{?dist}.COLUNDRUM
+%define main_release 5%{?dist}.COLUNDRUM
 
 %define bdir %{_builddir}/%{name}-%{main_version}
 
@@ -74,7 +74,7 @@ BuildRequires: systemd
 Summary: High performance web server
 Name: nginx
 Version: 1.12.2
-Release: 4%{?dist}.COLUNDRUM
+Release: 5%{?dist}.COLUNDRUM
 Packager: COLUNDRUM <colundrum@users.noreply.github.com>
 Vendor: Nginx, Inc.
 URL: http://nginx.org/
@@ -158,18 +158,22 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --with-http_image_filter_module=dynamic \
     --with-http_perl_module=dynamic \
     --with-http_xslt_module=dynamic \
-    --add-module=../../SOURCES/naxsi/naxsi_src \
     --add-module=../../SOURCES/headers-more-nginx-module \
-    --add-module=../../SOURCES/ngx_http_auth_pam_module \
-    --add-module=../../SOURCES/ngx_cache_purge \
-    --add-module=../../SOURCES/ngx-fancyindex \
+    --add-module=../../SOURCES/naxsi/naxsi_src \
     --add-module=../../SOURCES/nchan \
-    --add-module=../../SOURCES/nginx-upload-progress-module \
-    --add-module=../../SOURCES/ngx_brotli \
     --add-module=../../SOURCES/nginx_circle_gif \
+    --add-module=../../SOURCES/nginx-http-rdns \
+    --add-module=../../SOURCES/nginx-log-zmq \
     --add-module=../../SOURCES/nginx-openssl-version \
-    --add-module=../../SOURCES/ngx_log_if \
+    --add-module=../../SOURCES/nginx-push-stream-module \
+    --add-module=../../SOURCES/nginx-upload-progress-module \
+    --add-module=../../SOURCES/ngx_cache_purge \
+    --add-module=../../SOURCES/ngx_brotli \
+    --add-module=../../SOURCES/ngx_http_accounting_module \
+    --add-module=../../SOURCES/ngx_http_auth_pam_module \
     --add-module=../../SOURCES/ngx_http_internal_redirect \
+    --add-module=../../SOURCES/ngx_log_if \
+    --add-module=../../SOURCES/ngx-fancyindex \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}" \
     --with-debug
@@ -215,18 +219,22 @@ make %{?_smp_mflags}
     --with-http_image_filter_module=dynamic \
     --with-http_perl_module=dynamic \
     --with-http_xslt_module=dynamic \
-    --add-module=../../SOURCES/naxsi/naxsi_src \
     --add-module=../../SOURCES/headers-more-nginx-module \
-    --add-module=../../SOURCES/ngx_http_auth_pam_module \
-    --add-module=../../SOURCES/ngx_cache_purge \
-    --add-module=../../SOURCES/ngx-fancyindex \
+    --add-module=../../SOURCES/naxsi/naxsi_src \
     --add-module=../../SOURCES/nchan \
-    --add-module=../../SOURCES/nginx-upload-progress-module \
-    --add-module=../../SOURCES/ngx_brotli \
     --add-module=../../SOURCES/nginx_circle_gif \
+    --add-module=../../SOURCES/nginx-http-rdns \
+    --add-module=../../SOURCES/nginx-log-zmq \
     --add-module=../../SOURCES/nginx-openssl-version \
-    --add-module=../../SOURCES/ngx_log_if \
+    --add-module=../../SOURCES/nginx-push-stream-module \
+    --add-module=../../SOURCES/nginx-upload-progress-module \
+    --add-module=../../SOURCES/ngx_cache_purge \
+    --add-module=../../SOURCES/ngx_brotli \
+    --add-module=../../SOURCES/ngx_http_accounting_module \
+    --add-module=../../SOURCES/ngx_http_auth_pam_module \
     --add-module=../../SOURCES/ngx_http_internal_redirect \
+    --add-module=../../SOURCES/ngx_log_if \
+    --add-module=../../SOURCES/ngx-fancyindex \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}"
 make %{?_smp_mflags}
