@@ -1,6 +1,6 @@
 --- nginx.spec.org	2018-01-24 17:54:59.000000000 +0100
-+++ nginx.spec	2018-01-26 15:34:18.000000000 +0100
-@@ -24,6 +24,20 @@
++++ nginx.spec	2018-01-26 16:30:08.000000000 +0100
+@@ -24,6 +24,22 @@
  Requires(pre): shadow-utils
  Requires: systemd
  BuildRequires: systemd
@@ -18,10 +18,12 @@
 +BuildRequires: pam-devel
 +Requires: ImageMagick
 +BuildRequires: ImageMagick-devel
++Requires: zeromq
++BuildRequires: zeromq-devel
  %define os_minor %(lsb_release -rs | cut -d '.' -f 2)
  %if %{os_minor} >= 4
  Requires: openssl >= 1.0.2
-@@ -48,7 +62,7 @@
+@@ -48,7 +64,7 @@
  # end of distribution specific definitions
  
  %define main_version 1.12.2
@@ -30,7 +32,7 @@
  
  %define bdir %{_builddir}/%{name}-%{main_version}
  
-@@ -59,8 +73,9 @@
+@@ -59,8 +75,9 @@
  
  Summary: High performance web server
  Name: nginx
@@ -42,7 +44,7 @@
  Vendor: Nginx, Inc.
  URL: http://nginx.org/
  Group: %{_group}
-@@ -104,14 +119,122 @@
+@@ -104,14 +121,122 @@
      -e 's|%%PROVIDES%%|nginx-debug|g' < %{SOURCE2} > nginx-debug.init
  
  %build
@@ -167,7 +169,7 @@
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}"
  make %{?_smp_mflags}
-@@ -126,6 +249,8 @@
+@@ -126,6 +251,8 @@
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/fastcgi.conf
  
@@ -176,7 +178,7 @@
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/cache/nginx
-@@ -203,6 +328,7 @@
+@@ -203,6 +330,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
  %config(noreplace) %{_sysconfdir}/nginx/mime.types
  %config(noreplace) %{_sysconfdir}/nginx/fastcgi_params
@@ -184,7 +186,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/scgi_params
  %config(noreplace) %{_sysconfdir}/nginx/uwsgi_params
  %config(noreplace) %{_sysconfdir}/nginx/koi-utf
-@@ -224,6 +350,13 @@
+@@ -224,6 +352,13 @@
  
  %attr(0755,root,root) %dir %{_libdir}/nginx
  %attr(0755,root,root) %dir %{_libdir}/nginx/modules
@@ -198,7 +200,7 @@
  %dir %{_datadir}/nginx
  %dir %{_datadir}/nginx/html
  %{_datadir}/nginx/html/*
-@@ -233,6 +366,7 @@
+@@ -233,6 +368,7 @@
  
  %dir %{_datadir}/doc/%{name}-%{main_version}
  %doc %{_datadir}/doc/%{name}-%{main_version}/COPYRIGHT
@@ -206,7 +208,7 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -312,6 +446,9 @@
+@@ -312,6 +448,9 @@
  fi
  
  %changelog

@@ -1,6 +1,8 @@
 [![CircleCI](https://circleci.com/gh/colundrum/custom_nginx_rpms.svg?style=svg)](https://circleci.com/gh/colundrum/custom_nginx_rpms)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcolundrum%2Fcustom_nginx_rpms.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcolundrum%2Fcustom_nginx_rpms?ref=badge_shield)
 
+You need to install `epel-release` to use this package.
+
 # What is this repository?
 
 [Nginx](http://nginx.org) with :
@@ -48,8 +50,6 @@
   - [ngx_log_if](https://github.com/cfsego/ngx_log_if)
   - [ngx-fancyindex](https://github.com/aperezdc/ngx-fancyindex)
   - [upload-progress](https://github.com/masterzen/nginx-upload-progress-module)
-
-You can build RPM with headers-more-module using the official SRPM.
 
 # How to build RPM?
 
