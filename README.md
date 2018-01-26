@@ -50,6 +50,7 @@ You need to install `epel-release` to use this package.
   - [ngx_log_if](https://github.com/cfsego/ngx_log_if)
   - [ngx-fancyindex](https://github.com/aperezdc/ngx-fancyindex)
   - [upload-progress](https://github.com/masterzen/nginx-upload-progress-module)
+  - [vod](https://github.com/kaltura/nginx-vod-module)
 
 # How to build RPM?
 

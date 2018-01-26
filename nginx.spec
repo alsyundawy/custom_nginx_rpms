@@ -169,6 +169,7 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --add-module=../../SOURCES/nginx-openssl-version \
     --add-module=../../SOURCES/nginx-push-stream-module \
     --add-module=../../SOURCES/nginx-upload-progress-module \
+    --add-module=../../SOURCES/nginx-vod-module \
     --add-module=../../SOURCES/ngx_cache_purge \
     --add-module=../../SOURCES/ngx_brotli \
     --add-module=../../SOURCES/ngx_http_accounting_module \
@@ -230,6 +231,7 @@ make %{?_smp_mflags}
     --add-module=../../SOURCES/nginx-openssl-version \
     --add-module=../../SOURCES/nginx-push-stream-module \
     --add-module=../../SOURCES/nginx-upload-progress-module \
+    --add-module=../../SOURCES/nginx-vod-module \
     --add-module=../../SOURCES/ngx_cache_purge \
     --add-module=../../SOURCES/ngx_brotli \
     --add-module=../../SOURCES/ngx_http_accounting_module \

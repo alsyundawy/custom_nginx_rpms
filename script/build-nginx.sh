@@ -17,6 +17,7 @@ NAXSI_VERSION=0.55.3
 NCHAN_VERSION=1.1.14
 NGINX_OPENSSL_VERSION=0.04
 NGINX_PUSH_STREAM_VERSION=0.5.4
+NGINX_VOD_VERSION=1.22
 
 NGINX_SRPM_FILE=nginx-${NGINX_VERSION}-1.el${CENTOS_MAJOR_VERSION}_4.ngx.src.rpm
 curl -LO http://nginx.org/packages/centos/${CENTOS_MAJOR_VERSION}/SRPMS/${NGINX_SRPM_FILE}
@@ -39,6 +40,7 @@ git clone --single-branch --recurse-submodules -b ${NGINX_PUSH_STREAM_VERSION} h
 git clone --single-branch --recurse-submodules https://github.com/flant/nginx-http-rdns.git
 git clone --single-branch --recurse-submodules https://github.com/alticelabs/nginx-log-zmq.git
 git clone --single-branch --recurse-submodules -b v${HTTP_ACCOUNTING_MODULE} https://github.com/Lax/ngx_http_accounting_module.git
+git clone --single-branch --recurse-submodules -b ${NGINX_VOD_VERSION} https://github.com/kaltura/nginx-vod-module.git
 
 cd $HOME/rpmbuild/SPECS
 patch -p0 < $PATCH_PATH
