@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-01-27 16:02:57.000000000 +0100
-+++ nginx.spec	2018-01-27 16:04:07.000000000 +0100
++++ nginx.spec	2018-01-27 16:25:23.000000000 +0100
 @@ -24,6 +24,28 @@
  Requires(pre): shadow-utils
  Requires: systemd
@@ -24,8 +24,8 @@
 +BuildRequires: glibc-headers
 +Requires: ffmpeg
 +BuildRequires: ffmpeg-devel
-+Requires: fdk-aac
-+BuildRequires: fdk-aac-devel
++Requires: libfdk-aac
++BuildRequires: libfdk-aac-devel
  %define os_minor %(lsb_release -rs | cut -d '.' -f 2)
  %if %{os_minor} >= 4
  Requires: openssl >= 1.0.2
