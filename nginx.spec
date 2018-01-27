@@ -44,8 +44,6 @@ Requires: glibc
 BuildRequires: glibc-headers
 Requires: ffmpeg
 BuildRequires: ffmpeg-devel
-Requires: ffmpeg-compat
-BuildRequires: ffmpeg-compat-devel
 Requires: fdk-aac
 BuildRequires: fdk-aac-devel
 %define os_minor %(lsb_release -rs | cut -d '.' -f 2)
