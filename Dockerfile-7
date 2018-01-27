@@ -5,7 +5,7 @@ MAINTAINER COLUNDRUM
 RUN yum install -y epel-release
 RUN yum-config-manager --add-repo=https://negativo17.org/repos/epel-multimedia.repo
 RUN yum update -y
-RUN yum install -y gcc make rpm-build tar redhat-lsb-core
+RUN yum install -y gcc make rpm-build redhat-lsb-core
 
 # nginx dependencies
 RUN yum -y install git openssl-devel pcre-devel zlib-devel libxml2-devel libxslt-devel gd-devel perl-ExtUtils-Embed GeoIP-devel pam-devel ImageMagick-devel zeromq-devel glibc-headers ffmpeg-devel fdk-aac-devel
