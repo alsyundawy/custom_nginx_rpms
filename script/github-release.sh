@@ -9,6 +9,11 @@ NGINX_VERSION=$(grep '^+Version:' $PATCH_PATH | cut -d ' ' -f 2)
 RELEASE_TAG=${NGINX_VERSION}-$(grep '^+Release:' $PATCH_PATH | awk '{print $2}' | sed -e 's@%.*@@') # ad hoc
 RELEASE_NAME=v${RELEASE_TAG}
 
+if [ ! -f $CIRCLE_ARTIFACTS/modules_version.md ]; then
+    echo "File not found!"
+    exit 0
+fi
+
 need_to_release() {
   http_code=$(curl -sL -w "%{http_code}\\n" https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/releases/tag/${RELEASE_TAG} -o /dev/null)
   test $http_code = 404
@@ -61,6 +66,8 @@ Use at your own risk!
 Build on CentOS 7
 
 EOS
+
+cat $CIRCLE_ARTIFACTS/modules_version.md >> description.md
 
 # CentOS 7
 for i in *.el7*.COLUNDRUM.x86_64.rpm; do
