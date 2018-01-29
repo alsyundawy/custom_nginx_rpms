@@ -1,7 +1,10 @@
 [![CircleCI](https://circleci.com/gh/colundrum/custom_nginx_rpms.svg?style=svg)](https://circleci.com/gh/colundrum/custom_nginx_rpms)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcolundrum%2Fcustom_nginx_rpms.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcolundrum%2Fcustom_nginx_rpms?ref=badge_shield)
 
-You need to install `epel-release` to use this package.
+To use this package, you need to install :
+
+- epel            : `yum install epel-release`
+- epel-multimedia : `yum-config-manager --add-repo=https://negativo17.org/repos/epel-multimedia.repo`
 
 # What is this repository?
 
