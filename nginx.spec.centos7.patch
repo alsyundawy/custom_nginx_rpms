@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-01-27 16:02:57.000000000 +0100
-+++ nginx.spec	2018-01-27 16:40:48.000000000 +0100
++++ nginx.spec	2018-02-02 17:22:38.000000000 +0100
 @@ -24,6 +24,28 @@
  Requires(pre): shadow-utils
  Requires: systemd
@@ -54,7 +54,7 @@
  Vendor: Nginx, Inc.
  URL: http://nginx.org/
  Group: %{_group}
-@@ -104,14 +125,124 @@
+@@ -104,14 +125,130 @@
      -e 's|%%PROVIDES%%|nginx-debug|g' < %{SOURCE2} > nginx-debug.init
  
  %build
@@ -74,6 +74,8 @@
 +    --http-scgi-temp-path=%{_localstatedir}/cache/nginx/scgi_temp \
 +    --user=%{nginx_user} \
 +    --group=%{nginx_group} \
++    --with-openssl=../../SOURCES/openssl \
++    --with-openssl-opt='shared zlib enable-tls1_3 enable-weak-ssl-ciphers enable-camellia enable-seed enable-rfc3779 enable-cms enable-rc4 enable-rc2 enable-md2 enable-rc5 enable-mdc2 enable-ec2m enable-gost no-sctp' \
 +    --with-compat \
 +    --with-file-aio \
 +    --with-threads \
@@ -102,6 +104,7 @@
 +    --add-module=../../SOURCES/naxsi/naxsi_src \
 +    --add-module=../../SOURCES/nchan \
 +    --add-module=../../SOURCES/nginx_circle_gif \
++    --add-module=../../SOURCES/nginx-ct \
 +    --add-module=../../SOURCES/nginx-http-rdns \
 +    --add-module=../../SOURCES/nginx-log-zmq \
 +    --add-module=../../SOURCES/nginx-openssl-version \
@@ -137,6 +140,8 @@
 +    --http-scgi-temp-path=%{_localstatedir}/cache/nginx/scgi_temp \
 +    --user=%{nginx_user} \
 +    --group=%{nginx_group} \
++    --with-openssl=../../SOURCES/openssl \
++    --with-openssl-opt='shared zlib enable-tls1_3 enable-weak-ssl-ciphers enable-camellia enable-seed enable-rfc3779 enable-cms enable-rc4 enable-rc2 enable-md2 enable-rc5 enable-mdc2 enable-ec2m enable-gost no-sctp' \
 +    --with-compat \
 +    --with-file-aio \
 +    --with-threads \
@@ -165,6 +170,7 @@
 +    --add-module=../../SOURCES/naxsi/naxsi_src \
 +    --add-module=../../SOURCES/nchan \
 +    --add-module=../../SOURCES/nginx_circle_gif \
++    --add-module=../../SOURCES/nginx-ct \
 +    --add-module=../../SOURCES/nginx-http-rdns \
 +    --add-module=../../SOURCES/nginx-log-zmq \
 +    --add-module=../../SOURCES/nginx-openssl-version \
@@ -181,7 +187,7 @@
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}"
  make %{?_smp_mflags}
-@@ -126,6 +257,8 @@
+@@ -126,6 +263,8 @@
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/fastcgi.conf
  
@@ -190,7 +196,7 @@
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/cache/nginx
-@@ -203,6 +336,7 @@
+@@ -203,6 +342,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
  %config(noreplace) %{_sysconfdir}/nginx/mime.types
  %config(noreplace) %{_sysconfdir}/nginx/fastcgi_params
@@ -198,7 +204,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/scgi_params
  %config(noreplace) %{_sysconfdir}/nginx/uwsgi_params
  %config(noreplace) %{_sysconfdir}/nginx/koi-utf
-@@ -224,6 +358,13 @@
+@@ -224,6 +364,13 @@
  
  %attr(0755,root,root) %dir %{_libdir}/nginx
  %attr(0755,root,root) %dir %{_libdir}/nginx/modules
@@ -212,7 +218,7 @@
  %dir %{_datadir}/nginx
  %dir %{_datadir}/nginx/html
  %{_datadir}/nginx/html/*
-@@ -233,6 +374,7 @@
+@@ -233,6 +380,7 @@
  
  %dir %{_datadir}/doc/%{name}-%{main_version}
  %doc %{_datadir}/doc/%{name}-%{main_version}/COPYRIGHT
@@ -220,7 +226,7 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -312,6 +454,9 @@
+@@ -312,6 +460,9 @@
  fi
  
  %changelog
