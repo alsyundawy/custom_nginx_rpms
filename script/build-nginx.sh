@@ -10,6 +10,7 @@ HEADERS_MORE_VERSION=v0.33
 HTTP_ACCOUNTING_MODULE_VERSION=v0.5
 HTTP_AUTH_PAM_VERSION=v1.5.1
 HTTP_CACHE_PURGE_VERSION=2.3
+NGINX_CT_VERSION=v1.3.2
 HTTP_FANCYINDEX_VERSION=v0.4.2
 HTTP_INTERNAL_REDIRECT_VERSION=v0.6
 HTTP_UPLOADPROGRESS_VERSION=v0.9.2
@@ -18,6 +19,7 @@ NCHAN_VERSION=v1.1.14
 NGINX_OPENSSL_VERSION=v0.04
 NGINX_PUSH_STREAM_VERSION=0.5.4
 NGINX_VOD_VERSION=1.22
+OPENSSL_VERSION=tls1.3-draft-18
 
 cat <<EOS > /shared/modules_version.md
 
@@ -65,6 +67,8 @@ git clone --single-branch --recurse-submodules https://github.com/flant/nginx-ht
 git clone --single-branch --recurse-submodules https://github.com/alticelabs/nginx-log-zmq.git
 git clone --single-branch --recurse-submodules -b ${HTTP_ACCOUNTING_MODULE_VERSION} https://github.com/Lax/ngx_http_accounting_module.git
 git clone --single-branch --recurse-submodules -b ${NGINX_VOD_VERSION} https://github.com/kaltura/nginx-vod-module.git
+git clone --single-branch --recurse-submodules -b ${NGINX_CT_VERSION} https://github.com/grahamedgecombe/nginx-ct.git
+git clone --single-branch --recurse-submodules -b ${OPENSSL_VERSION} https://github.com/openssl/openssl.git
 
 cd $HOME/rpmbuild/SPECS
 patch -p0 < $PATCH_PATH
