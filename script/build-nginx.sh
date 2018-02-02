@@ -23,11 +23,14 @@ OPENSSL_VERSION=tls1.3-draft-18
 
 cat <<EOS > /shared/modules_version.md
 
+OpenSSL version : ${OPENSSL_VERSION}
+
 Modules version (branch or tag) :
 
 - brotli                 : MASTER
 - cache_purge            : ${HTTP_CACHE_PURGE_VERSION}
 - circle_gif             : MASTER
+- ct                     : ${NGINX_CT_VERSION}
 - fancyindex             : ${HTTP_FANCYINDEX_VERSION}
 - headers-more           : ${HEADERS_MORE_VERSION}
 - http_accounting_module : ${HTTP_ACCOUNTING_MODULE_VERSION}
