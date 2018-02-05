@@ -69,8 +69,8 @@ BuildRequires: systemd
 
 # end of distribution specific definitions
 
-%define main_version 1.12.2
-%define main_release 8%{?dist}.COLUNDRUM
+%define main_version 1.13.8
+%define main_release 0%{?dist}.COLUNDRUM
 
 %define bdir %{_builddir}/%{name}-%{main_version}
 
@@ -79,8 +79,8 @@ BuildRequires: systemd
 
 Summary: High performance web server
 Name: nginx
-Version: 1.12.2
-Release: 8%{?dist}.COLUNDRUM
+Version: 1.13.8
+Release: 0%{?dist}.COLUNDRUM
 Packager: COLUNDRUM <colundrum@users.noreply.github.com>
 Vendor: Nginx, Inc.
 URL: http://nginx.org/
@@ -456,18 +456,37 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
-* Wed Jan 24 2018 COLUNDRUM <colundrum@users.noreply.github.com>
-- 1.12.2 custom build
 
-* Tue Oct 17 2017 Konstantin Pavlov <thresh@nginx.com>
-- 1.12.2
+* Mon Feb 05 2018 COLUNDRUM <colundrum@users.noreply.github.com>
+- 1.13.8 custom build
+
+* Tue Dec 26 2017 Konstantin Pavlov <thresh@nginx.com>
+- 1.13.8
+
+* Tue Nov 21 2017 Konstantin Pavlov <thresh@nginx.com>
+- 1.13.7
+
+* Tue Oct 10 2017 Konstantin Pavlov <thresh@nginx.com>
+- 1.13.6
+
+* Tue Sep  5 2017 Konstantin Pavlov <thresh@nginx.com>
+- 1.13.5
+
+* Tue Aug  8 2017 Sergey Budnevitch <sb@nginx.com>
+- 1.13.4
 
 * Tue Jul 11 2017 Konstantin Pavlov <thresh@nginx.com>
-- 1.12.1
+- 1.13.3
 - Fixes CVE-2017-7529
 
-* Wed Apr 12 2017 Konstantin Pavlov <thresh@nginx.com>
-- 1.12.0
+* Tue Jun 27 2017 Konstantin Pavlov <thresh@nginx.com>
+- 1.13.2
+
+* Tue May 30 2017 Konstantin Pavlov <thresh@nginx.com>
+- 1.13.1
+
+* Tue Apr 25 2017 Konstantin Pavlov <thresh@nginx.com>
+- 1.13.0
 
 * Tue Apr  4 2017 Konstantin Pavlov <thresh@nginx.com>
 - 1.11.13
