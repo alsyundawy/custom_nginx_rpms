@@ -140,8 +140,6 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --http-scgi-temp-path=%{_localstatedir}/cache/nginx/scgi_temp \
     --user=%{nginx_user} \
     --group=%{nginx_group} \
-    --with-openssl=../../SOURCES/openssl \
-    --with-openssl-opt='shared zlib enable-tls1_3 enable-weak-ssl-ciphers enable-camellia enable-seed enable-rfc3779 enable-cms enable-rc4 enable-rc2 enable-md2 enable-rc5 enable-mdc2 enable-ec2m enable-gost no-sctp' \
     --with-compat \
     --with-file-aio \
     --with-threads \
@@ -205,8 +203,6 @@ make %{?_smp_mflags}
     --http-scgi-temp-path=%{_localstatedir}/cache/nginx/scgi_temp \
     --user=%{nginx_user} \
     --group=%{nginx_group} \
-    --with-openssl=../../SOURCES/openssl \
-    --with-openssl-opt='shared zlib enable-tls1_3 enable-weak-ssl-ciphers enable-camellia enable-seed enable-rfc3779 enable-cms enable-rc4 enable-rc2 enable-md2 enable-rc5 enable-mdc2 enable-ec2m enable-gost no-sctp' \
     --with-compat \
     --with-file-aio \
     --with-threads \
