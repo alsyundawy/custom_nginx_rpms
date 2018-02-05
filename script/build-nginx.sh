@@ -46,7 +46,7 @@ Modules version (branch or tag) :
 EOS
 
 NGINX_SRPM_FILE=nginx-${NGINX_VERSION}-1.el${CENTOS_MAJOR_VERSION}_4.ngx.src.rpm
-curl -LO http://nginx.org/packages/centos/${CENTOS_MAJOR_VERSION}/SRPMS/${NGINX_SRPM_FILE}
+curl -LO http://nginx.org/packages/mainline/centos/${CENTOS_MAJOR_VERSION}/SRPMS/${NGINX_SRPM_FILE}
 rpm -Uvh $NGINX_SRPM_FILE
 
 cd $HOME/rpmbuild/SOURCES
