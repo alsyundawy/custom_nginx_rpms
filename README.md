@@ -36,10 +36,6 @@ To use this package, you need to install :
 - threads
 
 
-- External OpenSSL :
-  - [openssl - tls1.3-draft-18](https://github.com/openssl/openssl/tree/tls1.3-draft-18)
-
-
 - External modules :
   - [brotli](https://github.com/google/ngx_brotli)
   - [cache_purge](https://github.com/FRiCKLE/ngx_cache_purge)
