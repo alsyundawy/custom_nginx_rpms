@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-02-05 15:02:42.000000000 +0100
-+++ nginx.spec	2018-02-13 13:34:01.000000000 +0100
++++ nginx.spec	2018-02-13 13:46:29.000000000 +0100
 @@ -24,6 +24,28 @@
  Requires(pre): shadow-utils
  Requires: systemd
@@ -34,7 +34,7 @@
  
  %define main_version 1.13.8
 -%define main_release 1%{?dist}.ngx
-+%define main_release 0%{?dist}.COLUNDRUM
++%define main_release 1%{?dist}.COLUNDRUM
  
  %define bdir %{_builddir}/%{name}-%{main_version}
  
@@ -49,7 +49,7 @@
 -Version: %{main_version}
 -Release: %{main_release}
 +Version: 1.13.8
-+Release: 0%{?dist}.COLUNDRUM
++Release: 1%{?dist}.COLUNDRUM
 +Packager: COLUNDRUM <colundrum@users.noreply.github.com>
  Vendor: Nginx, Inc.
  URL: http://nginx.org/
