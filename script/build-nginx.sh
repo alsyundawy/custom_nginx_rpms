@@ -22,6 +22,8 @@ NGINX_VOD_VERSION=1.22
 
 cat <<EOS > /shared/modules_version.md
 
+TCP FASTOPEN : activated
+
 Modules version (branch or tag) :
 
 - brotli                 : MASTER

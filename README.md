@@ -36,6 +36,10 @@ To use this package, you need to install :
 - threads
 
 
+- Additional CC FLAGS :
+  - DTCP_FASTOPEN : activate TCP FASTOPEN usage
+
+
 - External modules :
   - [brotli](https://github.com/google/ngx_brotli)
   - [cache_purge](https://github.com/FRiCKLE/ngx_cache_purge)
