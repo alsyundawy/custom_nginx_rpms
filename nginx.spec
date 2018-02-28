@@ -69,8 +69,8 @@ BuildRequires: systemd
 
 # end of distribution specific definitions
 
-%define main_version 1.13.8
-%define main_release 1%{?dist}.COLUNDRUM
+%define main_version 1.13.9
+%define main_release 0%{?dist}.COLUNDRUM
 
 %define bdir %{_builddir}/%{name}-%{main_version}
 
@@ -79,8 +79,8 @@ BuildRequires: systemd
 
 Summary: High performance web server
 Name: nginx
-Version: 1.13.8
-Release: 1%{?dist}.COLUNDRUM
+Version: 1.13.9
+Release: 0%{?dist}.COLUNDRUM
 Packager: COLUNDRUM <colundrum@users.noreply.github.com>
 Vendor: Nginx, Inc.
 URL: http://nginx.org/
@@ -457,8 +457,11 @@ fi
 
 %changelog
 
-* Mon Feb 05 2018 COLUNDRUM <colundrum@users.noreply.github.com>
-- 1.13.8 custom build
+* Mon Feb 28 2018 COLUNDRUM <colundrum@users.noreply.github.com>
+- 1.13.9 custom build
+
+* Tue Feb 20 2018 Konstantin Pavlov <thresh@nginx.com>
+- 1.13.9
 
 * Tue Dec 26 2017 Konstantin Pavlov <thresh@nginx.com>
 - 1.13.8
