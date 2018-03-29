@@ -77,7 +77,7 @@ To use this package, you need to install :
 ### CentOS7
 
 ```
-$ curl -LO http://nginx.org/packages/centos/7/SRPMS/nginx-1.8.1-1.el7.ngx.src.rpm
+$ curl -LO http://nginx.org/packages/mainline/centos/7/SRPMS/nginx-1.13.10-1.el7_4.ngx.src.rpm
 $ rpm2cpio.pl nginx-1.8.1-1.el7.ngx.src.rpm | cpio -idv nginx.spec
 $ cp nginx.spec nginx.spec.org
 $ patch -p0 < nginx.spec.centos7.patch
