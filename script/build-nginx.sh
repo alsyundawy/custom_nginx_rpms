@@ -1,5 +1,7 @@
 #!/bin/sh
 set -xe
+source /opt/rh/devtoolset-7/enable
+export X_SCLS="`scl enable devtoolset-7 'echo $X_SCLS'`"
 
 CENTOS_MAJOR_VERSION=$(rpm -q --qf '%{VERSION}' $(rpm -q --whatprovides redhat-release))
 PATCH_PATH=$HOME/nginx.spec.centos${CENTOS_MAJOR_VERSION}.patch
@@ -50,6 +52,8 @@ EOS
 NGINX_SRPM_FILE=nginx-${NGINX_VERSION}-1.el${CENTOS_MAJOR_VERSION}_4.ngx.src.rpm
 curl -LO http://nginx.org/packages/mainline/centos/${CENTOS_MAJOR_VERSION}/SRPMS/${NGINX_SRPM_FILE}
 rpm -Uvh $NGINX_SRPM_FILE
+
+gcc --version
 
 cd $HOME/rpmbuild/SOURCES
 git clone --single-branch --recurse-submodules https://github.com/google/ngx_brotli.git
