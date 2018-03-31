@@ -1,7 +1,5 @@
 #!/bin/sh
 set -xe
-source /opt/rh/devtoolset-7/enable
-export X_SCLS="`scl enable devtoolset-7 'echo $X_SCLS'`"
 
 CENTOS_MAJOR_VERSION=$(rpm -q --qf '%{VERSION}' $(rpm -q --whatprovides redhat-release))
 PATCH_PATH=$HOME/nginx.spec.centos${CENTOS_MAJOR_VERSION}.patch
@@ -20,6 +18,7 @@ NAXSI_VERSION=0.55.3
 NCHAN_VERSION=v1.1.14
 NGINX_OPENSSL_VERSION=v0.04
 NGINX_PUSH_STREAM_VERSION=0.5.4
+NGINX_VOD_VERSION=1.22
 
 cat <<EOS > /shared/modules_version.md
 
@@ -44,7 +43,7 @@ Modules version (branch or tag) :
 - openssl-version        : ${NGINX_OPENSSL_VERSION}
 - push-stream-module     : ${NGINX_PUSH_STREAM_VERSION}
 - upload-progress        : ${HTTP_UPLOADPROGRESS_VERSION}
-- vod                    : MASTER
+- vod                    : ${NGINX_VOD_VERSION}
 
 EOS
 
@@ -69,7 +68,7 @@ git clone --single-branch --recurse-submodules -b ${NGINX_PUSH_STREAM_VERSION} h
 git clone --single-branch --recurse-submodules https://github.com/flant/nginx-http-rdns.git
 git clone --single-branch --recurse-submodules https://github.com/alticelabs/nginx-log-zmq.git
 git clone --single-branch --recurse-submodules -b ${HTTP_ACCOUNTING_MODULE_VERSION} https://github.com/Lax/ngx_http_accounting_module.git
-git clone --single-branch --recurse-submodules https://github.com/kaltura/nginx-vod-module.git
+git clone --single-branch --recurse-submodules -b ${NGINX_VOD_VERSION} https://github.com/kaltura/nginx-vod-module.git
 git clone --single-branch --recurse-submodules -b ${NGINX_CT_VERSION} https://github.com/grahamedgecombe/nginx-ct.git
 
 cd $HOME/rpmbuild/SPECS
