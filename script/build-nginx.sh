@@ -20,7 +20,6 @@ NAXSI_VERSION=0.55.3
 NCHAN_VERSION=v1.1.14
 NGINX_OPENSSL_VERSION=v0.04
 NGINX_PUSH_STREAM_VERSION=0.5.4
-NGINX_VOD_VERSION=1.22
 
 cat <<EOS > /shared/modules_version.md
 
@@ -45,15 +44,13 @@ Modules version (branch or tag) :
 - openssl-version        : ${NGINX_OPENSSL_VERSION}
 - push-stream-module     : ${NGINX_PUSH_STREAM_VERSION}
 - upload-progress        : ${HTTP_UPLOADPROGRESS_VERSION}
-- vod                    : ${NGINX_VOD_VERSION}
+- vod                    : MASTER
 
 EOS
 
 NGINX_SRPM_FILE=nginx-${NGINX_VERSION}-1.el${CENTOS_MAJOR_VERSION}_4.ngx.src.rpm
 curl -LO http://nginx.org/packages/mainline/centos/${CENTOS_MAJOR_VERSION}/SRPMS/${NGINX_SRPM_FILE}
 rpm -Uvh $NGINX_SRPM_FILE
-
-gcc --version
 
 cd $HOME/rpmbuild/SOURCES
 git clone --single-branch --recurse-submodules https://github.com/google/ngx_brotli.git
@@ -72,7 +69,7 @@ git clone --single-branch --recurse-submodules -b ${NGINX_PUSH_STREAM_VERSION} h
 git clone --single-branch --recurse-submodules https://github.com/flant/nginx-http-rdns.git
 git clone --single-branch --recurse-submodules https://github.com/alticelabs/nginx-log-zmq.git
 git clone --single-branch --recurse-submodules -b ${HTTP_ACCOUNTING_MODULE_VERSION} https://github.com/Lax/ngx_http_accounting_module.git
-git clone --single-branch --recurse-submodules -b ${NGINX_VOD_VERSION} https://github.com/kaltura/nginx-vod-module.git
+git clone --single-branch --recurse-submodules https://github.com/kaltura/nginx-vod-module.git
 git clone --single-branch --recurse-submodules -b ${NGINX_CT_VERSION} https://github.com/grahamedgecombe/nginx-ct.git
 
 cd $HOME/rpmbuild/SPECS
