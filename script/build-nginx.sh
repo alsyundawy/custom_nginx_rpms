@@ -71,6 +71,9 @@ git clone --single-branch --recurse-submodules -b ${HTTP_ACCOUNTING_MODULE_VERSI
 git clone --single-branch --recurse-submodules -b ${NGINX_VOD_VERSION} https://github.com/kaltura/nginx-vod-module.git
 git clone --single-branch --recurse-submodules -b ${NGINX_CT_VERSION} https://github.com/grahamedgecombe/nginx-ct.git
 
+curl -LO https://patch-diff.githubusercontent.com/raw/kaltura/nginx-vod-module/pull/815.patch
+cd nginx-vod-module && git apply --verbose ../815.patch && rm ../815.patch
+
 cd $HOME/rpmbuild/SPECS
 patch -p0 < $PATCH_PATH
 rpmbuild -ba nginx.spec
