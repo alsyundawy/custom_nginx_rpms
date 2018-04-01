@@ -1,5 +1,7 @@
 #!/bin/sh
 set -xe
+source /opt/rh/devtoolset-7/enable
+export X_SCLS="`scl enable devtoolset-7 'echo $X_SCLS'`"
 
 CENTOS_MAJOR_VERSION=$(rpm -q --qf '%{VERSION}' $(rpm -q --whatprovides redhat-release))
 PATCH_PATH=$HOME/nginx.spec.centos${CENTOS_MAJOR_VERSION}.patch
