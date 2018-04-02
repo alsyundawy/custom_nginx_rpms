@@ -39,6 +39,7 @@ Modules version (branch or tag) :
 - openssl-version        : ${NGINX_OPENSSL_VERSION}
 - push-stream-module     : ${NGINX_PUSH_STREAM_VERSION}
 - upload-progress        : ${HTTP_UPLOADPROGRESS_VERSION}
+
 EOS
 
 NGINX_SRPM_FILE=nginx-${NGINX_VERSION}-1.el${CENTOS_MAJOR_VERSION}_4.ngx.src.rpm
