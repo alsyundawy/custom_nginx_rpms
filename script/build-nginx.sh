@@ -27,25 +27,18 @@ TCP FASTOPEN : activated
 
 Modules version (branch or tag) :
 
-- brotli                 : MASTER
 - cache_purge            : ${HTTP_CACHE_PURGE_VERSION}
-- circle_gif             : MASTER
 - ct                     : ${NGINX_CT_VERSION}
 - fancyindex             : ${HTTP_FANCYINDEX_VERSION}
 - headers-more           : ${HEADERS_MORE_VERSION}
 - http_accounting_module : ${HTTP_ACCOUNTING_MODULE_VERSION}
 - http_auth_pam          : ${HTTP_AUTH_PAM_VERSION}
 - http_internal_redirect : ${HTTP_INTERNAL_REDIRECT_VERSION}
-- http-rdns              : MASTER
-- log_if                 : MASTER
-- log-zmq                : MASTER
 - naxsi                  : ${NAXSI_VERSION}
 - nchan                  : ${NCHAN_VERSION}
 - openssl-version        : ${NGINX_OPENSSL_VERSION}
 - push-stream-module     : ${NGINX_PUSH_STREAM_VERSION}
 - upload-progress        : ${HTTP_UPLOADPROGRESS_VERSION}
-- vod                    : MASTER
-
 EOS
 
 NGINX_SRPM_FILE=nginx-${NGINX_VERSION}-1.el${CENTOS_MAJOR_VERSION}_4.ngx.src.rpm
@@ -71,6 +64,20 @@ git clone --single-branch --recurse-submodules https://github.com/alticelabs/ngi
 git clone --single-branch --recurse-submodules -b ${HTTP_ACCOUNTING_MODULE_VERSION} https://github.com/Lax/ngx_http_accounting_module.git
 git clone --single-branch --recurse-submodules https://github.com/kaltura/nginx-vod-module.git
 git clone --single-branch --recurse-submodules -b ${NGINX_CT_VERSION} https://github.com/grahamedgecombe/nginx-ct.git
+
+# commits id
+cd ngx_brotli
+echo -n '- brotli : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
+cd ../nginx_circle_gif
+echo -n '- circle_gif : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
+cd ../nginx-http-rdns
+echo -n '- http-rdns : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
+cd ../ngx_log_if
+echo -n '- log_if : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
+cd ../nginx-log-zmq
+echo -n '- log-zmq : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
+cd ../nginx-vod-module
+echo -n '- vod : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
 
 cd $HOME/rpmbuild/SPECS
 patch -p0 < $PATCH_PATH
