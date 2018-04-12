@@ -1,5 +1,5 @@
---- nginx.spec.org	2018-03-29 17:05:36.000000000 +0200
-+++ nginx.spec	2018-04-02 10:29:20.000000000 +0200
+--- nginx.spec.org	2018-04-12 08:16:43.000000000 +0200
++++ nginx.spec	2018-04-12 08:24:28.000000000 +0200
 @@ -24,6 +24,28 @@
  Requires(pre): shadow-utils
  Requires: systemd
@@ -32,9 +32,9 @@
 @@ -48,19 +70,18 @@
  # end of distribution specific definitions
  
- %define main_version 1.13.10
+ %define main_version 1.13.12
 -%define main_release 1%{?dist}.ngx
-+%define main_release 2%{?dist}.COLUNDRUM
++%define main_release 0%{?dist}.COLUNDRUM
  
  %define bdir %{_builddir}/%{name}-%{main_version}
  
@@ -48,8 +48,8 @@
  Name: nginx
 -Version: %{main_version}
 -Release: %{main_release}
-+Version: 1.13.10
-+Release: 2%{?dist}.COLUNDRUM
++Version: 1.13.12
++Release: 0%{?dist}.COLUNDRUM
 +Packager: COLUNDRUM <colundrum@users.noreply.github.com>
  Vendor: Nginx, Inc.
  URL: http://nginx.org/
@@ -222,17 +222,13 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -312,6 +456,13 @@
+@@ -312,6 +456,9 @@
  fi
  
  %changelog
++* Thu Apr 12 2018 COLUNDRUM <colundrum@users.noreply.github.com>
++- 1.13.12 custom build
 +
-+* Sun Apr 01 2018 COLUNDRUM <colundrum@users.noreply.github.com>
-+- 1.13.10 custom build using GCC 7
-+
-+* Thu Mar 29 2018 COLUNDRUM <colundrum@users.noreply.github.com>
-+- 1.13.10 custom build
-+
- * Tue Mar 20 2018 Konstantin Pavlov <thresh@nginx.com>
- - 1.13.10
+ * Mon Apr 09 2018 Konstantin Pavlov <thresh@nginx.com>
+ - 1.13.12
  
