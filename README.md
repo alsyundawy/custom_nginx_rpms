@@ -58,7 +58,6 @@ To use this package, you need to install :
   - [openssl-version](https://github.com/apcera/nginx-openssl-version)
   - [push-stream-module](https://github.com/wandenberg/nginx-push-stream-module)
   - [upload-progress](https://github.com/masterzen/nginx-upload-progress-module)
-  - [vod](https://github.com/kaltura/nginx-vod-module)
 
 # How to build RPM?
 

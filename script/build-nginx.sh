@@ -20,7 +20,6 @@ NAXSI_VERSION=0.55.3
 NCHAN_VERSION=v1.1.15
 NGINX_OPENSSL_VERSION=v0.04
 NGINX_PUSH_STREAM_VERSION=0.5.4
-VOD_VERSION=1.23
 
 cat <<EOS > /shared/modules_version.md
 
@@ -64,7 +63,6 @@ git clone --single-branch --recurse-submodules -b ${NGINX_PUSH_STREAM_VERSION} h
 git clone --single-branch --recurse-submodules https://github.com/flant/nginx-http-rdns.git
 git clone --single-branch --recurse-submodules https://github.com/alticelabs/nginx-log-zmq.git
 git clone --single-branch --recurse-submodules -b ${HTTP_ACCOUNTING_MODULE_VERSION} https://github.com/Lax/traffic-accounting-nginx-module.git
-git clone --single-branch --recurse-submodules -b ${VOD_VERSION} https://github.com/kaltura/nginx-vod-module.git
 git clone --single-branch --recurse-submodules -b ${NGINX_CT_VERSION} https://github.com/grahamedgecombe/nginx-ct.git
 
 # commits id
@@ -78,8 +76,6 @@ cd ../ngx_log_if
 echo -n '- log_if : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
 cd ../nginx-log-zmq
 echo -n '- log-zmq : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
-cd ../nginx-vod-module
-echo -n '- vod : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
 
 cd $HOME/rpmbuild/SPECS
 patch -p0 < $PATCH_PATH
