@@ -177,7 +177,7 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --add-module=../../SOURCES/nginx-vod-module \
     --add-module=../../SOURCES/ngx_cache_purge \
     --add-module=../../SOURCES/ngx_brotli \
-    --add-module=../../SOURCES/ngx_http_accounting_module \
+    --add-module=../../SOURCES/traffic-accounting-nginx-module \
     --add-module=../../SOURCES/ngx_http_auth_pam_module \
     --add-module=../../SOURCES/ngx_http_internal_redirect \
     --add-module=../../SOURCES/ngx_log_if \
@@ -240,7 +240,7 @@ make %{?_smp_mflags}
     --add-module=../../SOURCES/nginx-vod-module \
     --add-module=../../SOURCES/ngx_cache_purge \
     --add-module=../../SOURCES/ngx_brotli \
-    --add-module=../../SOURCES/ngx_http_accounting_module \
+    --add-module=../../SOURCES/traffic-accounting-nginx-module \
     --add-module=../../SOURCES/ngx_http_auth_pam_module \
     --add-module=../../SOURCES/ngx_http_internal_redirect \
     --add-module=../../SOURCES/ngx_log_if \

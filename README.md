@@ -47,7 +47,7 @@ To use this package, you need to install :
   - [ct](https://github.com/grahamedgecombe/nginx-ct)
   - [fancyindex](https://github.com/aperezdc/ngx-fancyindex)
   - [headers-more](https://github.com/openresty/headers-more-nginx-module)
-  - [http_accounting_module](https://github.com/Lax/ngx_http_accounting_module)
+  - [traffic-accounting-nginx-module](https://github.com/Lax/traffic-accounting-nginx-module)
   - [http_auth_pam](https://github.com/sto/ngx_http_auth_pam_module)
   - [http_internal_redirect](https://github.com/flygoast/ngx_http_internal_redirect)
   - [http-rdns](https://github.com/flant/nginx-http-rdns)
