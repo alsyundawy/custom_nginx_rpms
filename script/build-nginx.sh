@@ -9,17 +9,17 @@ PATCH_PATH=$HOME/nginx.spec.centos${CENTOS_MAJOR_VERSION}.patch
 NGINX_VERSION=$(grep '^+Version:' $PATCH_PATH | cut -d ' ' -f 2)
 
 HEADERS_MORE_VERSION=v0.33
-HTTP_ACCOUNTING_MODULE_VERSION=v1.2
 HTTP_AUTH_PAM_VERSION=v1.5.1
 HTTP_CACHE_PURGE_VERSION=2.3
 NGINX_CT_VERSION=v1.3.2
 HTTP_FANCYINDEX_VERSION=v0.4.2
 HTTP_INTERNAL_REDIRECT_VERSION=v0.6
 HTTP_UPLOADPROGRESS_VERSION=v0.9.2
-NAXSI_VERSION=0.55.3
+NAXSI_VERSION=0.56rc1
 NCHAN_VERSION=v1.1.15
 NGINX_OPENSSL_VERSION=v0.04
 NGINX_PUSH_STREAM_VERSION=0.5.4
+TRAFFIC_ACCOUNTING_MODULE_VERSION=v1.2
 
 cat <<EOS > /shared/modules_version.md
 
@@ -62,7 +62,7 @@ git clone --single-branch --recurse-submodules -b ${HTTP_INTERNAL_REDIRECT_VERSI
 git clone --single-branch --recurse-submodules -b ${NGINX_PUSH_STREAM_VERSION} https://github.com/wandenberg/nginx-push-stream-module.git
 git clone --single-branch --recurse-submodules https://github.com/flant/nginx-http-rdns.git
 git clone --single-branch --recurse-submodules https://github.com/alticelabs/nginx-log-zmq.git
-git clone --single-branch --recurse-submodules -b ${HTTP_ACCOUNTING_MODULE_VERSION} https://github.com/Lax/traffic-accounting-nginx-module.git
+git clone --single-branch --recurse-submodules -b ${TRAFFIC_ACCOUNTING_MODULE_VERSION} https://github.com/Lax/traffic-accounting-nginx-module.git
 git clone --single-branch --recurse-submodules -b ${NGINX_CT_VERSION} https://github.com/grahamedgecombe/nginx-ct.git
 
 # commits id
