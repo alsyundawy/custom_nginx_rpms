@@ -42,10 +42,6 @@ Requires: zeromq
 BuildRequires: zeromq-devel
 Requires: glibc
 BuildRequires: glibc-headers
-Requires: ffmpeg
-BuildRequires: ffmpeg-devel
-Requires: libfdk-aac
-BuildRequires: libfdk-aac-devel
 %define os_minor %(lsb_release -rs | cut -d '.' -f 2)
 %if %{os_minor} >= 4
 Requires: openssl >= 1.0.2
