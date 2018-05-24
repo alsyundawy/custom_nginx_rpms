@@ -64,7 +64,7 @@ git clone --single-branch --recurse-submodules -b ${NGINX_PUSH_STREAM_VERSION} h
 git clone --single-branch --recurse-submodules https://github.com/flant/nginx-http-rdns.git
 git clone --single-branch --recurse-submodules https://github.com/alticelabs/nginx-log-zmq.git
 git clone --single-branch --recurse-submodules -b ${HTTP_ACCOUNTING_MODULE_VERSION} https://github.com/Lax/traffic-accounting-nginx-module.git
-git clone --single-branch --recurse-submodules -v ${VOD_VERSION} https://github.com/kaltura/nginx-vod-module.git
+git clone --single-branch --recurse-submodules -b ${VOD_VERSION} https://github.com/kaltura/nginx-vod-module.git
 git clone --single-branch --recurse-submodules -b ${NGINX_CT_VERSION} https://github.com/grahamedgecombe/nginx-ct.git
 
 # commits id
