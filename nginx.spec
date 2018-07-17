@@ -66,7 +66,7 @@ BuildRequires: systemd
 # end of distribution specific definitions
 
 %define main_version 1.13.12
-%define main_release 1%{?dist}.COLUNDRUM
+%define main_release 2%{?dist}.COLUNDRUM
 
 %define bdir %{_builddir}/%{name}-%{main_version}
 
@@ -76,7 +76,7 @@ BuildRequires: systemd
 Summary: High performance web server
 Name: nginx
 Version: 1.13.12
-Release: 1%{?dist}.COLUNDRUM
+Release: 2%{?dist}.COLUNDRUM
 Packager: COLUNDRUM <colundrum@users.noreply.github.com>
 Vendor: Nginx, Inc.
 URL: http://nginx.org/

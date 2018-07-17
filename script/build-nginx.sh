@@ -11,7 +11,6 @@ NGINX_VERSION=$(grep '^+Version:' $PATCH_PATH | cut -d ' ' -f 2)
 HEADERS_MORE_VERSION=v0.33
 HTTP_AUTH_PAM_VERSION=v1.5.1
 HTTP_CACHE_PURGE_VERSION=2.3
-NGINX_CT_VERSION=v1.3.2
 HTTP_FANCYINDEX_VERSION=v0.4.2
 HTTP_INTERNAL_REDIRECT_VERSION=v0.6
 HTTP_UPLOADPROGRESS_VERSION=v0.9.2
@@ -28,7 +27,6 @@ TCP FASTOPEN : activated
 Modules version (branch or tag) :
 
 - cache_purge            : ${HTTP_CACHE_PURGE_VERSION}
-- ct                     : ${NGINX_CT_VERSION}
 - fancyindex             : ${HTTP_FANCYINDEX_VERSION}
 - headers-more           : ${HEADERS_MORE_VERSION}
 - http_accounting_module : ${HTTP_ACCOUNTING_MODULE_VERSION}
@@ -63,7 +61,7 @@ git clone --single-branch --recurse-submodules -b ${NGINX_PUSH_STREAM_VERSION} h
 git clone --single-branch --recurse-submodules https://github.com/flant/nginx-http-rdns.git
 git clone --single-branch --recurse-submodules https://github.com/alticelabs/nginx-log-zmq.git
 git clone --single-branch --recurse-submodules -b ${TRAFFIC_ACCOUNTING_MODULE_VERSION} https://github.com/Lax/traffic-accounting-nginx-module.git
-git clone --single-branch --recurse-submodules -b ${NGINX_CT_VERSION} https://github.com/grahamedgecombe/nginx-ct.git
+git clone --single-branch --recurse-submodules https://github.com/grahamedgecombe/nginx-ct.git
 
 # commits id
 cd ngx_brotli
@@ -76,6 +74,8 @@ cd ../ngx_log_if
 echo -n '- log_if : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
 cd ../nginx-log-zmq
 echo -n '- log-zmq : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
+cd ../nginx-ct
+echo -n '- ct : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
 
 cd $HOME/rpmbuild/SPECS
 patch -p0 < $PATCH_PATH
