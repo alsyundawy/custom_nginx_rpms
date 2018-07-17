@@ -65,8 +65,8 @@ BuildRequires: systemd
 
 # end of distribution specific definitions
 
-%define main_version 1.13.12
-%define main_release 3%{?dist}.COLUNDRUM
+%define main_version 1.15.1
+%define main_release 0%{?dist}.COLUNDRUM
 
 %define bdir %{_builddir}/%{name}-%{main_version}
 
@@ -75,8 +75,8 @@ BuildRequires: systemd
 
 Summary: High performance web server
 Name: nginx
-Version: 1.13.12
-Release: 3%{?dist}.COLUNDRUM
+Version: 1.15.1
+Release: 0%{?dist}.COLUNDRUM
 Packager: COLUNDRUM <colundrum@users.noreply.github.com>
 Vendor: Nginx, Inc.
 URL: http://nginx.org/
@@ -450,6 +450,12 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
+* Tue Jul 03 2018 Konstantin Pavlov <thresh@nginx.com>
+- 1.15.1
+
+* Tue Jun 05 2018 Konstantin Pavlov <thresh@nginx.com>
+- 1.15.0
+
 * Thu Apr 12 2018 COLUNDRUM <colundrum@users.noreply.github.com>
 - 1.13.12 custom build
 
@@ -555,7 +561,7 @@ fi
 
 * Tue Mar 29 2016 Konstantin Pavlov <thresh@nginx.com>
 - 1.9.13
-- Added perl and nJScript dynamic modules
+- Added perl and njs dynamic modules
 - Fixed Requires section for dynamic modules on CentOS7/RHEL7
 
 * Wed Feb 24 2016 Sergey Budnevitch <sb@nginx.com>
