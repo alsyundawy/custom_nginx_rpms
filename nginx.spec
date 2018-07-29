@@ -65,7 +65,7 @@ BuildRequires: systemd
 
 # end of distribution specific definitions
 
-%define main_version 1.15.1
+%define main_version 1.15.2
 %define main_release 0%{?dist}.COLUNDRUM
 
 %define bdir %{_builddir}/%{name}-%{main_version}
@@ -75,7 +75,7 @@ BuildRequires: systemd
 
 Summary: High performance web server
 Name: nginx
-Version: 1.15.1
+Version: 1.15.2
 Release: 0%{?dist}.COLUNDRUM
 Packager: COLUNDRUM <colundrum@users.noreply.github.com>
 Vendor: Nginx, Inc.
@@ -450,6 +450,9 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
+* Tue Jul 24 2018 Konstantin Pavlov <thresh@nginx.com>
+- 1.15.2
+
 * Tue Jul 03 2018 Konstantin Pavlov <thresh@nginx.com>
 - 1.15.1
 

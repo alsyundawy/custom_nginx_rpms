@@ -1,5 +1,5 @@
---- nginx.spec.org	2018-07-17 16:50:05.000000000 +0200
-+++ nginx.spec	2018-07-17 16:56:03.000000000 +0200
+--- nginx.spec.org	2018-07-29 22:23:39.000000000 +0200
++++ nginx.spec	2018-07-29 22:25:46.000000000 +0200
 @@ -24,6 +24,24 @@
  Requires(pre): shadow-utils
  Requires: systemd
@@ -28,7 +28,7 @@
 @@ -48,19 +66,18 @@
  # end of distribution specific definitions
  
- %define main_version 1.15.1
+ %define main_version 1.15.2
 -%define main_release 1%{?dist}.ngx
 +%define main_release 0%{?dist}.COLUNDRUM
  
@@ -44,7 +44,7 @@
  Name: nginx
 -Version: %{main_version}
 -Release: %{main_release}
-+Version: 1.15.1
++Version: 1.15.2
 +Release: 0%{?dist}.COLUNDRUM
 +Packager: COLUNDRUM <colundrum@users.noreply.github.com>
  Vendor: Nginx, Inc.
@@ -216,7 +216,7 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -318,6 +456,9 @@
+@@ -321,6 +459,9 @@
  * Tue Jun 05 2018 Konstantin Pavlov <thresh@nginx.com>
  - 1.15.0
  
