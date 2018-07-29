@@ -13,9 +13,8 @@ HTTP_AUTH_PAM_VERSION=v1.5.1
 HTTP_CACHE_PURGE_VERSION=2.3
 HTTP_FANCYINDEX_VERSION=v0.4.3
 HTTP_INTERNAL_REDIRECT_VERSION=v0.6
-HTTP_UPLOADPROGRESS_VERSION=v0.9.2
 NAXSI_VERSION=0.56
-NCHAN_VERSION=v1.1.15
+NCHAN_VERSION=v1.2.0
 NGINX_OPENSSL_VERSION=v0.04
 NGINX_PUSH_STREAM_VERSION=0.5.4
 TRAFFIC_ACCOUNTING_MODULE_VERSION=v1.2
@@ -52,7 +51,7 @@ git clone --single-branch --recurse-submodules -b ${HTTP_AUTH_PAM_VERSION} https
 git clone --single-branch --recurse-submodules -b ${HTTP_CACHE_PURGE_VERSION} https://github.com/FRiCKLE/ngx_cache_purge.git
 git clone --single-branch --recurse-submodules -b ${HTTP_FANCYINDEX_VERSION} https://github.com/aperezdc/ngx-fancyindex.git
 git clone --single-branch --recurse-submodules -b ${NCHAN_VERSION} https://github.com/slact/nchan.git
-git clone --single-branch --recurse-submodules -b ${HTTP_UPLOADPROGRESS_VERSION} https://github.com/masterzen/nginx-upload-progress-module.git
+git clone --single-branch --recurse-submodules https://github.com/masterzen/nginx-upload-progress-module.git
 git clone --single-branch --recurse-submodules https://github.com/evanmiller/nginx_circle_gif.git
 git clone --single-branch --recurse-submodules -b ${NGINX_OPENSSL_VERSION} https://github.com/apcera/nginx-openssl-version.git
 git clone --single-branch --recurse-submodules https://github.com/cfsego/ngx_log_if.git
@@ -66,6 +65,8 @@ git clone --single-branch --recurse-submodules https://github.com/grahamedgecomb
 # commits id
 cd ngx_brotli
 echo -n '- brotli : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
+cd ../nginx-upload-progress-module
+echo -n '- nginx-upload-progress-module : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
 cd ../nginx_circle_gif
 echo -n '- circle_gif : MASTER @ ' | (cat - ; git rev-parse HEAD) >> /shared/modules_version.md
 cd ../nginx-http-rdns
