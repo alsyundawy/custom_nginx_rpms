@@ -26,6 +26,8 @@ if [ ! -f "$DOCKER_FILE" ]; then
   exit 1
 fi
 
+echo ${PWD##*/}
+ls
 cd $CIRCLE_WORKING_DIRECTORY
 
 md5_digest_source > $MD5_DIGEST_SOURCE
