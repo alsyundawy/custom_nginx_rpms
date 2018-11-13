@@ -5,7 +5,7 @@
 %define nginx_loggroup adm
 
 # distribution specific definitions
-%define use_systemd (0%{?fedora} && 0%{?fedora} >= 18) || (0%{?rhel} && 0%{?rhel} >= 7) || (0%{?suse_version} == 1315)
+%define use_systemd (0%{?fedora} && 0%{?fedora} >= 18) || (0%{?rhel} && 0%{?rhel} >= 7) || (0%{?suse_version} >= 1315)
 
 %if 0%{?rhel} == 6
 %define _group System Environment/Daemons
@@ -54,7 +54,7 @@ BuildRequires: openssl-devel >= 1.0.1
 %endif
 %endif
 
-%if 0%{?suse_version} == 1315
+%if 0%{?suse_version} >= 1315
 %define _group Productivity/Networking/Web/Servers
 %define nginx_loggroup trusted
 Requires(pre): shadow
@@ -65,7 +65,7 @@ BuildRequires: systemd
 
 # end of distribution specific definitions
 
-%define main_version 1.15.2
+%define main_version 1.15.6
 %define main_release 0%{?dist}.COLUNDRUM
 
 %define bdir %{_builddir}/%{name}-%{main_version}
@@ -75,8 +75,8 @@ BuildRequires: systemd
 
 Summary: High performance web server
 Name: nginx
-Version: 1.15.2
-Release: 0%{?dist}.COLUNDRUM
+Version: %{main_version}
+Release: %{main_release}
 Packager: COLUNDRUM <colundrum@users.noreply.github.com>
 Vendor: Nginx, Inc.
 URL: http://nginx.org/
@@ -108,7 +108,7 @@ Provides: webserver
 nginx [engine x] is an HTTP and reverse proxy server, as well as
 a mail proxy server.
 
-%if 0%{?suse_version} == 1315
+%if 0%{?suse_version} >= 1315
 %debug_package
 %endif
 
@@ -450,6 +450,24 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
+* Tue Nov 13 2018 COLUNDRUM <colundrum@users.noreply.github.com>
+- 1.15.6 custom build
+
+* Tue Nov 06 2018 Konstantin Pavlov <thresh@nginx.com>
+- 1.15.6
+- Fixes CVE-2018-16843
+- Fixes CVE-2018-16844
+- Fixes CVE-2018-16845
+
+* Tue Oct 02 2018 Konstantin Pavlov <thresh@nginx.com>
+- 1.15.5
+
+* Tue Sep 25 2018 Konstantin Pavlov <thresh@nginx.com>
+- 1.15.4
+
+* Tue Aug 28 2018 Konstantin Pavlov <thresh@nginx.com>
+- 1.15.3
+
 * Tue Jul 24 2018 Konstantin Pavlov <thresh@nginx.com>
 - 1.15.2
 

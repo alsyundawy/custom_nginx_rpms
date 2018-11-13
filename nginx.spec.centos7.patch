@@ -1,5 +1,5 @@
---- nginx.spec.org	2018-07-29 22:23:39.000000000 +0200
-+++ nginx.spec	2018-07-29 22:25:46.000000000 +0200
+--- nginx.spec.org	2018-11-13 23:23:41.000000000 +0100
++++ nginx.spec	2018-11-13 23:31:42.000000000 +0100
 @@ -24,6 +24,24 @@
  Requires(pre): shadow-utils
  Requires: systemd
@@ -28,7 +28,7 @@
 @@ -48,19 +66,18 @@
  # end of distribution specific definitions
  
- %define main_version 1.15.2
+ %define main_version 1.15.6
 -%define main_release 1%{?dist}.ngx
 +%define main_release 0%{?dist}.COLUNDRUM
  
@@ -42,10 +42,8 @@
 -
  Summary: High performance web server
  Name: nginx
--Version: %{main_version}
--Release: %{main_release}
-+Version: 1.15.2
-+Release: 0%{?dist}.COLUNDRUM
+ Version: %{main_version}
+ Release: %{main_release}
 +Packager: COLUNDRUM <colundrum@users.noreply.github.com>
  Vendor: Nginx, Inc.
  URL: http://nginx.org/
@@ -216,7 +214,17 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -321,6 +459,9 @@
+@@ -312,6 +450,9 @@
+ fi
+ 
+ %changelog
++* Tue Nov 13 2018 COLUNDRUM <colundrum@users.noreply.github.com>
++- 1.15.6 custom build
++
+ * Tue Nov 06 2018 Konstantin Pavlov <thresh@nginx.com>
+ - 1.15.6
+ - Fixes CVE-2018-16843
+@@ -336,6 +477,9 @@
  * Tue Jun 05 2018 Konstantin Pavlov <thresh@nginx.com>
  - 1.15.0
  
