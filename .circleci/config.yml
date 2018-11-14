@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/
+    parallelism: 1
+    shell: /bin/bash --login
+    docker:
+    - image: colundrum/centos-builder-custom_nginx_rpms
+      command: /sbin/init
+    steps:
+    - run: ./run.sh
