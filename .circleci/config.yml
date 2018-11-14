@@ -6,6 +6,4 @@ jobs:
     shell: /bin/bash --login
     docker:
     - image: colundrum/centos-builder-custom_nginx_rpms
-      command: /sbin/init
-    steps:
-    - run: ./run.sh
+      command: su builder -c '/home/builder/run.sh'
