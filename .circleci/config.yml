@@ -8,4 +8,6 @@ jobs:
     - image: colundrum/centos-builder-custom_nginx_rpms
       command: /sbin/init
     steps:
-    - run: su builder -c '/home/builder/run.sh'
+    - run: mkdir /shared
+    - run: chown builder /shared
+    - run: su builder -c 'cd /home/builder && /home/builder/run.sh'
