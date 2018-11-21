@@ -24,6 +24,8 @@ cat <<EOS > /shared/modules_version.md
 
 TCP FASTOPEN : activated
 
+OpenSSL : ${OPENSSL_TAG}
+
 Modules version (branch or tag) :
 
 - cache_purge            : ${HTTP_CACHE_PURGE_VERSION}
