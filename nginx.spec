@@ -179,6 +179,8 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --add-module=../../SOURCES/ngx-fancyindex \
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}" \
+    --with-openssl=../../SOURCES/openssl \
+    --with-openssl-opt=enable-tls1_3 \
     --with-debug
 make %{?_smp_mflags}
 %{__mv} %{bdir}/objs/nginx \
@@ -240,7 +242,9 @@ make %{?_smp_mflags}
     --add-module=../../SOURCES/ngx_log_if \
     --add-module=../../SOURCES/ngx-fancyindex \
     --with-cc-opt="%{WITH_CC_OPT}" \
-    --with-ld-opt="%{WITH_LD_OPT}"
+    --with-ld-opt="%{WITH_LD_OPT}" \
+    --with-openssl=../../SOURCES/openssl \
+    --with-openssl-opt=enable-tls1_3
 make %{?_smp_mflags}
 
 %install

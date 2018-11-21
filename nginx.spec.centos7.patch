@@ -1,5 +1,5 @@
 --- nginx.spec.org	2018-11-13 23:22:41.000000000 +0100
-+++ nginx.spec	2018-11-14 00:06:15.000000000 +0100
++++ nginx.spec	2018-11-21 18:20:27.000000000 +0100
 @@ -24,6 +24,24 @@
  Requires(pre): shadow-utils
  Requires: systemd
@@ -50,7 +50,7 @@
  Vendor: Nginx, Inc.
  URL: http://nginx.org/
  Group: %{_group}
-@@ -104,14 +121,124 @@
+@@ -104,16 +121,130 @@
      -e 's|%%PROVIDES%%|nginx-debug|g' < %{SOURCE2} > nginx-debug.init
  
  %build
@@ -113,6 +113,8 @@
 +    --add-module=../../SOURCES/ngx-fancyindex \
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}" \
++    --with-openssl=../../SOURCES/openssl \
++    --with-openssl-opt=enable-tls1_3 \
      --with-debug
  make %{?_smp_mflags}
  %{__mv} %{bdir}/objs/nginx \
@@ -175,9 +177,14 @@
 +    --add-module=../../SOURCES/ngx_log_if \
 +    --add-module=../../SOURCES/ngx-fancyindex \
      --with-cc-opt="%{WITH_CC_OPT}" \
-     --with-ld-opt="%{WITH_LD_OPT}"
+-    --with-ld-opt="%{WITH_LD_OPT}"
++    --with-ld-opt="%{WITH_LD_OPT}" \
++    --with-openssl=../../SOURCES/openssl \
++    --with-openssl-opt=enable-tls1_3
  make %{?_smp_mflags}
-@@ -126,6 +253,8 @@
+ 
+ %install
+@@ -126,6 +257,8 @@
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/fastcgi.conf
  
@@ -186,7 +193,7 @@
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/cache/nginx
-@@ -203,6 +332,7 @@
+@@ -203,6 +336,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
  %config(noreplace) %{_sysconfdir}/nginx/mime.types
  %config(noreplace) %{_sysconfdir}/nginx/fastcgi_params
@@ -194,7 +201,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/scgi_params
  %config(noreplace) %{_sysconfdir}/nginx/uwsgi_params
  %config(noreplace) %{_sysconfdir}/nginx/koi-utf
-@@ -224,6 +354,13 @@
+@@ -224,6 +358,13 @@
  
  %attr(0755,root,root) %dir %{_libdir}/nginx
  %attr(0755,root,root) %dir %{_libdir}/nginx/modules
@@ -208,7 +215,7 @@
  %dir %{_datadir}/nginx
  %dir %{_datadir}/nginx/html
  %{_datadir}/nginx/html/*
-@@ -233,6 +370,7 @@
+@@ -233,6 +374,7 @@
  
  %dir %{_datadir}/doc/%{name}-%{main_version}
  %doc %{_datadir}/doc/%{name}-%{main_version}/COPYRIGHT
@@ -216,7 +223,7 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -312,6 +450,9 @@
+@@ -312,6 +454,9 @@
  fi
  
  %changelog
@@ -226,7 +233,7 @@
  * Tue Nov 06 2018 Konstantin Pavlov <thresh@nginx.com>
  - 1.15.6
  - Fixes CVE-2018-16843
-@@ -336,6 +477,9 @@
+@@ -336,6 +481,9 @@
  * Tue Jun 05 2018 Konstantin Pavlov <thresh@nginx.com>
  - 1.15.0
  

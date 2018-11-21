@@ -18,6 +18,7 @@ NCHAN_VERSION=v1.2.3
 NGINX_OPENSSL_VERSION=v0.04
 NGINX_PUSH_STREAM_VERSION=0.5.4
 TRAFFIC_ACCOUNTING_MODULE_VERSION=v1.2
+OPENSSL_TAG=OpenSSL_1_1_1a
 
 cat <<EOS > /shared/modules_version.md
 
@@ -44,6 +45,7 @@ curl -LO http://nginx.org/packages/mainline/centos/${CENTOS_MAJOR_VERSION}/SRPMS
 rpm -Uvh $NGINX_SRPM_FILE
 
 cd $HOME/rpmbuild/SOURCES
+git clone --single-branch --recurse-submodules -b ${OPENSSL_TAG} https://github.com/openssl/openssl.git
 git clone --single-branch --recurse-submodules https://github.com/google/ngx_brotli.git
 git clone --single-branch --recurse-submodules -b ${NAXSI_VERSION} https://github.com/nbs-system/naxsi.git
 git clone --single-branch --recurse-submodules -b ${HEADERS_MORE_VERSION} https://github.com/openresty/headers-more-nginx-module.git
