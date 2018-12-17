@@ -39,8 +39,6 @@ To use this package, you need to install :
 - Additional CC FLAGS :
   - DTCP_FASTOPEN : activate TCP FASTOPEN usage
 
-- Additional LD :
-  - -ljemalloc
 
 - External modules :
   - [brotli](https://github.com/google/ngx_brotli)

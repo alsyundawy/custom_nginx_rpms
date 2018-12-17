@@ -24,8 +24,6 @@ cat <<EOS > /shared/modules_version.md
 
 TCP FASTOPEN : activated
 
-JEMALLOC : forced
-
 OpenSSL : ${OPENSSL_TAG}
 
 Modules version (branch or tag) :
