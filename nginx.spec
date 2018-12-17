@@ -73,7 +73,7 @@ BuildRequires: systemd
 %define bdir %{_builddir}/%{name}-%{main_version}
 
 %define WITH_CC_OPT $(echo %{optflags} $(pcre-config --cflags)) -DTCP_FASTOPEN=23 -fPIC
-%define WITH_LD_OPT -Wl,-z,relro -Wl,-z,now -pie,-E -ljemalloc
+%define WITH_LD_OPT -Wl,-z,relro -Wl,-z,now -pie
 
 Summary: High performance web server
 Name: nginx

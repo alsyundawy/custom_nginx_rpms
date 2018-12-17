@@ -28,7 +28,6 @@ To use this package, you need to install :
 - http_sub_module
 - http_v2_module
 - http_xslt_module=dynamic
-- jemalloc
 - pcre-jit
 - stream
 - stream_realip_module
