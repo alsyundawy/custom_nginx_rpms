@@ -73,7 +73,7 @@ BuildRequires: systemd
 %define bdir %{_builddir}/%{name}-%{main_version}
 
 %define WITH_CC_OPT $(echo %{optflags} $(pcre-config --cflags)) -DTCP_FASTOPEN=23 -fPIC
-%define WITH_LD_OPT -Wl,-z,relro -Wl,-z,now -pie
+%define WITH_LD_OPT -Wl,-z,relro -Wl,-z,now -pie,-E -ljemalloc
 
 Summary: High performance web server
 Name: nginx
@@ -183,7 +183,6 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --with-ld-opt="%{WITH_LD_OPT}" \
     --with-openssl=../../SOURCES/openssl \
     --with-openssl-opt=enable-tls1_3 \
-    --with-jemalloc \
     --with-debug
 make %{?_smp_mflags}
 %{__mv} %{bdir}/objs/nginx \
@@ -247,8 +246,7 @@ make %{?_smp_mflags}
     --with-cc-opt="%{WITH_CC_OPT}" \
     --with-ld-opt="%{WITH_LD_OPT}" \
     --with-openssl=../../SOURCES/openssl \
-    --with-openssl-opt=enable-tls1_3 \
-    --with-jemalloc
+    --with-openssl-opt=enable-tls1_3
 make %{?_smp_mflags}
 
 %install
