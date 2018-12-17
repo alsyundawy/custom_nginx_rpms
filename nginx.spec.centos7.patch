@@ -1,6 +1,6 @@
---- nginx.spec.org	2018-11-28 14:52:03.000000000 +0100
-+++ nginx.spec	2018-12-04 11:18:16.000000000 +0100
-@@ -24,6 +24,24 @@
+--- nginx.spec.org	2018-12-17 08:28:18.000000000 +0100
++++ nginx.spec	2018-12-17 08:51:07.000000000 +0100
+@@ -24,6 +24,26 @@
  Requires(pre): shadow-utils
  Requires: systemd
  BuildRequires: systemd
@@ -20,12 +20,14 @@
 +BuildRequires: ImageMagick-devel
 +Requires: zeromq
 +BuildRequires: zeromq-devel
++Requires: jemalloc
++BuildRequires: jemalloc-devel
 +Requires: glibc
 +BuildRequires: glibc-headers
  %define os_minor %(lsb_release -rs | cut -d '.' -f 2)
  %if %{os_minor} >= 4
  Requires: openssl >= 1.0.2
-@@ -48,19 +66,18 @@
+@@ -48,19 +68,18 @@
  # end of distribution specific definitions
  
  %define main_version 1.15.7
@@ -35,11 +37,12 @@
  %define bdir %{_builddir}/%{name}-%{main_version}
  
 -%define WITH_CC_OPT $(echo %{optflags} $(pcre-config --cflags)) -fPIC
-+%define WITH_CC_OPT $(echo %{optflags} $(pcre-config --cflags)) -DTCP_FASTOPEN=23 -fPIC
- %define WITH_LD_OPT -Wl,-z,relro -Wl,-z,now -pie
- 
--%define BASE_CONFIGURE_ARGS $(echo "--prefix=%{_sysconfdir}/nginx --sbin-path=%{_sbindir}/nginx --modules-path=%{_libdir}/nginx/modules --conf-path=%{_sysconfdir}/nginx/nginx.conf --error-log-path=%{_localstatedir}/log/nginx/error.log --http-log-path=%{_localstatedir}/log/nginx/access.log --pid-path=%{_localstatedir}/run/nginx.pid --lock-path=%{_localstatedir}/run/nginx.lock --http-client-body-temp-path=%{_localstatedir}/cache/nginx/client_temp --http-proxy-temp-path=%{_localstatedir}/cache/nginx/proxy_temp --http-fastcgi-temp-path=%{_localstatedir}/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=%{_localstatedir}/cache/nginx/uwsgi_temp --http-scgi-temp-path=%{_localstatedir}/cache/nginx/scgi_temp --user=%{nginx_user} --group=%{nginx_group} --with-compat --with-file-aio --with-threads --with-http_addition_module --with-http_auth_request_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_ssl_module --with-http_stub_status_module --with-http_sub_module --with-http_v2_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module")
+-%define WITH_LD_OPT -Wl,-z,relro -Wl,-z,now -pie
 -
+-%define BASE_CONFIGURE_ARGS $(echo "--prefix=%{_sysconfdir}/nginx --sbin-path=%{_sbindir}/nginx --modules-path=%{_libdir}/nginx/modules --conf-path=%{_sysconfdir}/nginx/nginx.conf --error-log-path=%{_localstatedir}/log/nginx/error.log --http-log-path=%{_localstatedir}/log/nginx/access.log --pid-path=%{_localstatedir}/run/nginx.pid --lock-path=%{_localstatedir}/run/nginx.lock --http-client-body-temp-path=%{_localstatedir}/cache/nginx/client_temp --http-proxy-temp-path=%{_localstatedir}/cache/nginx/proxy_temp --http-fastcgi-temp-path=%{_localstatedir}/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=%{_localstatedir}/cache/nginx/uwsgi_temp --http-scgi-temp-path=%{_localstatedir}/cache/nginx/scgi_temp --user=%{nginx_user} --group=%{nginx_group} --with-compat --with-file-aio --with-threads --with-http_addition_module --with-http_auth_request_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_ssl_module --with-http_stub_status_module --with-http_sub_module --with-http_v2_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module")
++%define WITH_CC_OPT $(echo %{optflags} $(pcre-config --cflags)) -DTCP_FASTOPEN=23 -fPIC
++%define WITH_LD_OPT -ljemalloc,-Wl,-z,relro -Wl,-z,now -pie
+ 
  Summary: High performance web server
  Name: nginx
 -Version: %{main_version}
@@ -50,7 +53,7 @@
  Vendor: Nginx, Inc.
  URL: http://nginx.org/
  Group: %{_group}
-@@ -104,16 +121,130 @@
+@@ -104,16 +123,130 @@
      -e 's|%%PROVIDES%%|nginx-debug|g' < %{SOURCE2} > nginx-debug.init
  
  %build
@@ -184,7 +187,7 @@
  make %{?_smp_mflags}
  
  %install
-@@ -126,6 +257,8 @@
+@@ -126,6 +259,8 @@
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/*.default
  %{__rm} -f $RPM_BUILD_ROOT%{_sysconfdir}/nginx/fastcgi.conf
  
@@ -193,7 +196,7 @@
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/log/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/run/nginx
  %{__mkdir} -p $RPM_BUILD_ROOT%{_localstatedir}/cache/nginx
-@@ -203,6 +336,7 @@
+@@ -203,6 +338,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/conf.d/default.conf
  %config(noreplace) %{_sysconfdir}/nginx/mime.types
  %config(noreplace) %{_sysconfdir}/nginx/fastcgi_params
@@ -201,7 +204,7 @@
  %config(noreplace) %{_sysconfdir}/nginx/scgi_params
  %config(noreplace) %{_sysconfdir}/nginx/uwsgi_params
  %config(noreplace) %{_sysconfdir}/nginx/koi-utf
-@@ -224,6 +358,13 @@
+@@ -224,6 +360,13 @@
  
  %attr(0755,root,root) %dir %{_libdir}/nginx
  %attr(0755,root,root) %dir %{_libdir}/nginx/modules
@@ -215,7 +218,7 @@
  %dir %{_datadir}/nginx
  %dir %{_datadir}/nginx/html
  %{_datadir}/nginx/html/*
-@@ -233,6 +374,7 @@
+@@ -233,6 +376,7 @@
  
  %dir %{_datadir}/doc/%{name}-%{main_version}
  %doc %{_datadir}/doc/%{name}-%{main_version}/COPYRIGHT
@@ -223,7 +226,7 @@
  %{_mandir}/man8/nginx.8*
  
  %pre
-@@ -312,6 +454,9 @@
+@@ -312,6 +456,9 @@
  fi
  
  %changelog
@@ -233,7 +236,7 @@
  * Tue Nov 27 2018 Konstantin Pavlov <thresh@nginx.com>
  - 1.15.7
  
-@@ -339,6 +484,9 @@
+@@ -339,6 +486,9 @@
  * Tue Jun 05 2018 Konstantin Pavlov <thresh@nginx.com>
  - 1.15.0
  
