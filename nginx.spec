@@ -40,8 +40,6 @@ Requires: ImageMagick
 BuildRequires: ImageMagick-devel
 Requires: zeromq
 BuildRequires: zeromq-devel
-Requires: jemalloc
-BuildRequires: jemalloc-devel
 Requires: glibc
 BuildRequires: glibc-headers
 %define os_minor %(lsb_release -rs | cut -d '.' -f 2)
