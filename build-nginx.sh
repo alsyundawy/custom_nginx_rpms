@@ -13,7 +13,6 @@ HTTP_AUTH_PAM_VERSION=v1.5.1
 HTTP_CACHE_PURGE_VERSION=2.3
 HTTP_FANCYINDEX_VERSION=v0.4.3
 HTTP_INTERNAL_REDIRECT_VERSION=v0.6
-JEMALLOC_VERSION=5.1.0
 NAXSI_VERSION=0.56
 NCHAN_VERSION=v1.2.3
 NGINX_OPENSSL_VERSION=v0.04
@@ -25,7 +24,6 @@ cat <<EOS > /shared/modules_version.md
 
 TCP FASTOPEN : activated
 
-JEMALLOC : ${JEMALLOC_VERSION}
 OpenSSL : ${OPENSSL_TAG}
 
 Modules version (branch or tag) :
@@ -56,7 +54,6 @@ git clone --single-branch --recurse-submodules -b ${HEADERS_MORE_VERSION} https:
 git clone --single-branch --recurse-submodules -b ${HTTP_AUTH_PAM_VERSION} https://github.com/sto/ngx_http_auth_pam_module.git
 git clone --single-branch --recurse-submodules -b ${HTTP_CACHE_PURGE_VERSION} https://github.com/FRiCKLE/ngx_cache_purge.git
 git clone --single-branch --recurse-submodules -b ${HTTP_FANCYINDEX_VERSION} https://github.com/aperezdc/ngx-fancyindex.git
-git clone --single-branch --recurse-submodules -b ${JEMALLOC_VERSION} https://github.com/jemalloc/jemalloc.git
 git clone --single-branch --recurse-submodules -b ${NCHAN_VERSION} https://github.com/slact/nchan.git
 git clone --single-branch --recurse-submodules https://github.com/masterzen/nginx-upload-progress-module.git
 git clone --single-branch --recurse-submodules https://github.com/evanmiller/nginx_circle_gif.git

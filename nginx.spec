@@ -40,6 +40,8 @@ Requires: ImageMagick
 BuildRequires: ImageMagick-devel
 Requires: zeromq
 BuildRequires: zeromq-devel
+Requires: jemalloc
+BuildRequires: jemalloc-devel
 Requires: glibc
 BuildRequires: glibc-headers
 %define os_minor %(lsb_release -rs | cut -d '.' -f 2)
@@ -181,7 +183,7 @@ sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
     --with-ld-opt="%{WITH_LD_OPT}" \
     --with-openssl=../../SOURCES/openssl \
     --with-openssl-opt=enable-tls1_3 \
-    --with-jemalloc=../../SOURCES/jemalloc \
+    --with-jemalloc \
     --with-debug
 make %{?_smp_mflags}
 %{__mv} %{bdir}/objs/nginx \
@@ -246,7 +248,7 @@ make %{?_smp_mflags}
     --with-ld-opt="%{WITH_LD_OPT}" \
     --with-openssl=../../SOURCES/openssl \
     --with-openssl-opt=enable-tls1_3 \
-    --with-jemalloc=../../SOURCES/jemalloc
+    --with-jemalloc
 make %{?_smp_mflags}
 
 %install
